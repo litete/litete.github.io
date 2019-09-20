@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[使用hexo和gitpage搭建博客]]></title>
-    <url>%2F2019%2F09%2F20%2F%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGitpage%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%2F</url>
-    <content type="text"><![CDATA[使用Hexo和GitPage搭建个人博客作为一个程序员，个人博客可以说是不可或缺的。它可以记录自己技术成长的过程，也可以供别人参考、给他人提供方便，还可以锻炼自己的表达能力等等。这几年陆陆续续的在很多地方写过博客（CSDN、个人服务器），但是都有一些缺陷，所以最后决定用GitPage作为自己博客的新起点 Github Page 是 Github 提供的一种免费的静态网页托管服务（所以想想免费的空间不用也挺浪费的哈哈哈），可以用来托管博客、项目官网等静态网页。支持 Jekyll、Hugo、Hexo 编译静态资源，这次我们的主角就是 Hexo 了，具体的内容下面在文章内介绍。 一、准备环境&emsp;&emsp;1.node.js&emsp;&emsp;2.git安装非常简单 此处不再赘述&emsp;&emsp;安装验证： 123git versionnode -vnpm -v 二、安装Hexo在命令行输入执行以下命令： npm install -g hexo-cli 安装 Hexo 完成后，再执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。 123hexo init myBlogcd myBlognpm install 注：myBlog为文件夹的名字 可根据自己的需求修改 新建完成后，指定文件夹的目录如下： 1234567├── _config.yml # 网站的配置信息，您可以在此配置大部分的参数。 ├── package.json├── scaffolds # 模版文件夹├── source # 资源文件夹，除 _posts 文件，其他以下划线_开头的文件或者文件夹不会被编译打包到public文件夹| ├── _drafts # 草稿文件| └── _posts # 文章Markdowm文件 └── themes # 主题文件夹 好了，如果上面的命令都没报错的话，就恭喜了，运行 hexo s 命令，其中 s 是 server 的缩写，在浏览器中输入 http://localhost:4000 回车就可以预览效果了。hexo s 以下是我本地的预览效果，更换了 next 主题的，默认不是这个主题。]]></content>
+    <title><![CDATA[Hexo使用Next主题]]></title>
+    <url>%2F2019%2F09%2F20%2FHexo%E4%BD%BF%E7%94%A8Next%E4%B8%BB%E9%A2%98%2F</url>
+    <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F09%2F19%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <title><![CDATA[使用Hexo和Gitpage搭建博客]]></title>
+    <url>%2F2019%2F09%2F20%2F%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGitpage%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[作为一个程序员，个人博客可以说是不可或缺的。它可以记录自己技术成长的过程，也可以供别人参考、给他人提供方便，还可以锻炼自己的表达能力等等。这几年陆陆续续的在很多地方写过博客（CSDN、个人服务器），但是都有一些缺陷，所以最后决定用GitPage作为自己博客的新起点 Github Page 是 Github 提供的一种免费的静态网页托管服务（所以想想免费的空间不用也挺浪费的哈哈哈），可以用来托管博客、项目官网等静态网页。支持 Jekyll、Hugo、Hexo 编译静态资源，这次我们的主角就是 Hexo 了，具体的内容下面在文章内介绍。 一、准备环境&emsp;&emsp;1.node.js&emsp;&emsp;2.git安装非常简单 此处不再赘述&emsp;&emsp;安装验证： 123git versionnode -vnpm -v 二、安装Hexo在命令行输入执行以下命令： npm install -g hexo-cli 安装 Hexo 完成后，再执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。 123hexo init myBlogcd myBlognpm install 注：myBlog为文件夹的名字 可根据自己的需求修改 新建完成后，指定文件夹的目录如下： 1234567├── _config.yml # 网站的配置信息，您可以在此配置大部分的参数。 ├── package.json├── scaffolds # 模版文件夹├── source # 资源文件夹，除 _posts 文件，其他以下划线_开头的文件或者文件夹不会被编译打包到public文件夹| ├── _drafts # 草稿文件| └── _posts # 文章Markdowm文件 └── themes # 主题文件夹 好了，如果上面的命令都没报错的话，就恭喜了，运行 hexo s 命令，其中 s 是 server 的缩写，在浏览器中输入 http://localhost:4000 回车就可以预览效果了。hexo s 以下是我本地的预览效果，更换了 next 主题的，默认不是这个主题。]]></content>
   </entry>
 </search>
