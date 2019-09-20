@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hexo使用Next主题]]></title>
+    <title><![CDATA[使用Hexo和Gitpage搭建博客(二)]]></title>
     <url>%2F2019%2F09%2F20%2FHexo%E4%BD%BF%E7%94%A8Next%E4%B8%BB%E9%A2%98%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[在进行了Hexo和GitPage搭建博客之后需要将本地博客推送到GitPage上，具体操作下面在文章内介绍。 一、注册Github&emsp;&emsp;首先如果你还没有 Github 账号的先注册一个，此处不赘述 二、创建仓库点击 Start project 或者下面的 new repository 创建一个新的仓库 注：由于我已经有相同的仓库名了 所以此处会报错，请忽略此错误 安装 Hexo 完成后，再执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。 123hexo init myBlogcd myBlognpm install 注：myBlog为文件夹的名字 可根据自己的需求修改 三、配置SSH Key要使用 git 工具首先要配置一下SSH key，为部署本地博客到 Github 做准备。如有需要请自行Google，此处不再赘述 四、部署到Github此时，本地和Github的工作做得差不了，是时候把它们两个连接起来了。 第一：打开项目根目录下的 _config.yml 配置文件配置参数。拉到文件末尾，填上如下配置（也可同时部署到多个仓库，后面再说）1234deploy: type: git repo: github: git@github.com:@@@/@@@.github.io.git 注： @@@/@@@ 需要修改为自己的链接 第二：要安装一个部署插件 hexo-deployer-git。 npm install hexo-deployer-git --save 最后执行以下命令就可以部署上传啦 12hexo ghexo d 命令提示： hexo g 生成环境hexo d 部署环境hexo s 启动服务预览]]></content>
   </entry>
   <entry>
     <title><![CDATA[使用Hexo和Gitpage搭建博客]]></title>
