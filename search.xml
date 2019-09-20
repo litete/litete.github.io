@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[secondBlog]]></title>
+    <url>%2F2019%2F09%2F20%2FsecondBlog%2F</url>
+    <content type="text"></content>
+      <tags>
+        <tag>centOS</tag>
+        <tag>tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[测试First博客]]></title>
+    <url>%2F2019%2F09%2F20%2F%E6%B5%8B%E8%AF%95First%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"></content>
+      <tags>
+        <tag>centOS</tag>
+        <tag>tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[firstBlog]]></title>
     <url>%2F2019%2F09%2F19%2FfirstBlog%2F</url>
     <content type="text"></content>
