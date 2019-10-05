@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.litede.cn/"/>
-  <updated>2019-09-20T10:05:21.061Z</updated>
+  <updated>2019-10-05T08:40:38.280Z</updated>
   <id>http://www.litede.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot读取外部配置文件</title>
+    <link href="http://www.litede.cn/2019/10/05/SpringBoot%E8%AF%BB%E5%8F%96%E5%A4%96%E9%83%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
+    <id>http://www.litede.cn/2019/10/05/SpringBoot读取外部配置文件/</id>
+    <published>2019-10-05T08:26:07.000Z</published>
+    <updated>2019-10-05T08:40:38.280Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>有时候项目打包成一个jar 或者war ,通过java -jar 命令运行springboot 项目，因为springboot<br>项目有自己的application.properties<br>配置文件，但是我们打完包之后，它也会打到包里边，倒是也能打开压缩包修改properties 文件，但是也是较为麻烦。</p><p>现在有如下需求，比如客户需要在很多个服务器部署一套项目，但是它们的数据库连接不一样，我们不能针对于这么多服务器，多次打包，很恶心，当然可以打完包，复制一堆，分别修改压缩包里边的配置文件。</p><p>springboot 有读取外部配置文件的方法，如下优先级：</p><p>第一种是在jar包的同一目录下建一个config文件夹，然后把配置文件放到这个文件夹下。</p><p>第二种是直接把配置文件放到jar包的同级目录。</p><p>第三种在classpath下建一个config文件夹，然后把配置文件放进去。</p><p>第四种是在classpath下直接放配置文件。</p><p>看到如上的优先级了吗？也就是说springboot<br>默认是优先读取它本身同级目录下的一个config/application.properties<br>文件的。我们通常在src/main/resources 文件夹下创建的application.properties<br>文件的优先级竟然是最低的！！！。</p></blockquote><h2 id="展示"><a href="#展示" class="headerlink" title="展示"></a>展示</h2><ol><li>新建Project（本人使用的是IDEA），很简单，此处不再赘述。</li><li>在项目根目录下新建config文件夹</li><li>在config文件夹下新建application.properties或application.yml文件<br>如图所示：<br><img src="/images/springboot%E8%AF%BB%E5%8F%96%E5%A4%96%E9%83%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" alt="如图所示"></li></ol><hr><p> 此处的优先级大于src目录下的application.yml文件. 我们可以把一些公共的配置文件代码放置到此处，这样就达到配置文件代码解耦合的目的了</p><hr>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;有时候项目打包成一个jar 或者war ,通过java -jar 命令运行springboot 项目，因为springboot&lt;br&gt;项目有自己的application.properties&lt;br&gt;配置文件，但是我们打完包之后，它也会打到包里边，倒
+      
+    
+    </summary>
+    
+    
+      <category term="SpringBoot" scheme="http://www.litede.cn/categories/SpringBoot/"/>
+    
+    
+      <category term="SpringBoot" scheme="http://www.litede.cn/tags/SpringBoot/"/>
+    
+  </entry>
   
   <entry>
     <title>使用Hexo和Gitpage搭建博客(二)</title>
