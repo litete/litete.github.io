@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="SpringBoot,">
+  <meta name="keywords" content="docker,SpringBoot,">
 
 
 
@@ -81,20 +81,30 @@
 
 
 
-<meta name="description" content="有时候项目打包成一个jar 或者war ,通过java -jar 命令运行springboot 项目，因为springboot项目有自己的application.properties配置文件，但是我们打完包之后，它也会打到包里边，倒是也能打开压缩包修改properties 文件，但是也是较为麻烦。 现在有如下需求，比如客户需要在很多个服务器部署一套项目，但是它们的数据库连接不一样，我们不能针对于">
-<meta name="keywords" content="SpringBoot">
+<meta name="description" content="** Idea是Java开发利器，springboot是Java生态中最流行的微服务框架，docker是时下最火的容器技术，那么它们结合在一起会产生什么化学反应呢？** 一、 开发前准备 Docker的安装可以参考https://docs.docker.com/install/  配置docker远程连接端口   1vi /usr/lib/systemd/system/docker.service">
+<meta name="keywords" content="docker,SpringBoot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringBoot读取外部配置文件">
-<meta property="og:url" content="http://www.litede.cn/2019/10/05/SpringBoot读取外部配置文件/index.html">
+<meta property="og:title" content="Idea远程一键部署springboot到Docker">
+<meta property="og:url" content="http://www.litede.cn/2019/10/06/Idea远程一键部署springboot到Docker/index.html">
 <meta property="og:site_name" content="李特个人博客">
-<meta property="og:description" content="有时候项目打包成一个jar 或者war ,通过java -jar 命令运行springboot 项目，因为springboot项目有自己的application.properties配置文件，但是我们打完包之后，它也会打到包里边，倒是也能打开压缩包修改properties 文件，但是也是较为麻烦。 现在有如下需求，比如客户需要在很多个服务器部署一套项目，但是它们的数据库连接不一样，我们不能针对于">
+<meta property="og:description" content="** Idea是Java开发利器，springboot是Java生态中最流行的微服务框架，docker是时下最火的容器技术，那么它们结合在一起会产生什么化学反应呢？** 一、 开发前准备 Docker的安装可以参考https://docs.docker.com/install/  配置docker远程连接端口   1vi /usr/lib/systemd/system/docker.service">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191005163459624.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-10-05T08:52:00.039Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191006091149961.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191006091416311.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019100609145883.jpg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191006091526731.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191006091552984.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191006091643540.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191006091954238.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191006092002910.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191006092051828.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191006092345561.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191006092407773.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-10-06T01:33:43.626Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringBoot读取外部配置文件">
-<meta name="twitter:description" content="有时候项目打包成一个jar 或者war ,通过java -jar 命令运行springboot 项目，因为springboot项目有自己的application.properties配置文件，但是我们打完包之后，它也会打到包里边，倒是也能打开压缩包修改properties 文件，但是也是较为麻烦。 现在有如下需求，比如客户需要在很多个服务器部署一套项目，但是它们的数据库连接不一样，我们不能针对于">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191005163459624.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70">
+<meta name="twitter:title" content="Idea远程一键部署springboot到Docker">
+<meta name="twitter:description" content="** Idea是Java开发利器，springboot是Java生态中最流行的微服务框架，docker是时下最火的容器技术，那么它们结合在一起会产生什么化学反应呢？** 一、 开发前准备 Docker的安装可以参考https://docs.docker.com/install/  配置docker远程连接端口   1vi /usr/lib/systemd/system/docker.service">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191006091149961.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70">
 
 
 
@@ -124,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://www.litede.cn/2019/10/05/SpringBoot读取外部配置文件/">
+  <link rel="canonical" href="http://www.litede.cn/2019/10/06/Idea远程一键部署springboot到Docker/">
 
 
 
 
 
-  <title>SpringBoot读取外部配置文件 | 李特个人博客</title>
+  <title>Idea远程一键部署springboot到Docker | 李特个人博客</title>
   
 
 
@@ -300,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.litede.cn/2019/10/05/SpringBoot读取外部配置文件/">
+    <link itemprop="mainEntityOfPage" href="http://www.litede.cn/2019/10/06/Idea远程一键部署springboot到Docker/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李特">
@@ -317,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SpringBoot读取外部配置文件</h1>
+          <h1 class="post-title" itemprop="name headline">Idea远程一键部署springboot到Docker</h1>
         
 
         <div class="post-meta">
@@ -329,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-05T16:26:07+08:00">
-                2019-10-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-06T09:09:39+08:00">
+                2019-10-06
               </time>
             
 
@@ -352,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringBoot/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringBoot</span>
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
                   </a>
                 </span>
 
@@ -370,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/10/05/SpringBoot读取外部配置文件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/05/SpringBoot读取外部配置文件/" itemprop="commentCount"></span>
+                <a href="/2019/10/06/Idea远程一键部署springboot到Docker/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/06/Idea远程一键部署springboot到Docker/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -399,24 +409,55 @@
       
 
       
-        <blockquote>
-<p>有时候项目打包成一个jar 或者war ,通过java -jar 命令运行springboot 项目，因为springboot<br>项目有自己的application.properties<br>配置文件，但是我们打完包之后，它也会打到包里边，倒是也能打开压缩包修改properties 文件，但是也是较为麻烦。</p>
-<p>现在有如下需求，比如客户需要在很多个服务器部署一套项目，但是它们的数据库连接不一样，我们不能针对于这么多服务器，多次打包，很恶心，当然可以打完包，复制一堆，分别修改压缩包里边的配置文件。</p>
-<p>springboot 有读取外部配置文件的方法，如下优先级：</p>
-<p>第一种是在jar包的同一目录下建一个config文件夹，然后把配置文件放到这个文件夹下。</p>
-<p>第二种是直接把配置文件放到jar包的同级目录。</p>
-<p>第三种在classpath下建一个config文件夹，然后把配置文件放进去。</p>
-<p>第四种是在classpath下直接放配置文件。</p>
-<p>看到如上的优先级了吗？也就是说springboot<br>默认是优先读取它本身同级目录下的一个config/application.properties<br>文件的。我们通常在src/main/resources 文件夹下创建的application.properties<br>文件的优先级竟然是最低的！！！。</p>
-</blockquote>
-<h2 id="展示"><a href="#展示" class="headerlink" title="展示"></a>展示</h2><ol>
-<li>新建Project（本人使用的是IDEA），很简单，此处不再赘述。</li>
-<li>在项目根目录下新建config文件夹</li>
-<li>在config文件夹下新建application.properties或application.yml文件<br>如图所示：<br><img src="https://img-blog.csdnimg.cn/20191005163459624.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70" alt="如图所示"></li>
+        <p>**</p>
+<h2 id="Idea是Java开发利器，springboot是Java生态中最流行的微服务框架，docker是时下最火的容器技术，那么它们结合在一起会产生什么化学反应呢？"><a href="#Idea是Java开发利器，springboot是Java生态中最流行的微服务框架，docker是时下最火的容器技术，那么它们结合在一起会产生什么化学反应呢？" class="headerlink" title="Idea是Java开发利器，springboot是Java生态中最流行的微服务框架，docker是时下最火的容器技术，那么它们结合在一起会产生什么化学反应呢？"></a>Idea是Java开发利器，springboot是Java生态中最流行的微服务框架，docker是时下最火的容器技术，那么它们结合在一起会产生什么化学反应呢？</h2><p>**</p>
+<h2 id="一、-开发前准备"><a href="#一、-开发前准备" class="headerlink" title="一、 开发前准备"></a>一、 开发前准备</h2><ol>
+<li><p>Docker的安装可以参考<a href="https://docs.docker.com/install/" target="_blank" rel="noopener">https://docs.docker.com/install/</a></p>
+</li>
+<li><p>配置docker远程连接端口</p>
+</li>
 </ol>
-<hr>
-<p> 此处的优先级大于src目录下的application.yml文件. 我们可以把一些公共的配置文件代码放置到此处，这样就达到配置文件代码解耦合的目的了</p>
-<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/lib/systemd/system/docker.service</span><br></pre></td></tr></table></figure>
+
+<p>找到 ExecStart，在最后面添加 -H tcp://0.0.0.0:2375，如下图所示<br><img src="https://img-blog.csdnimg.cn/20191006091149961.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ol start="3">
+<li>重启docker</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>开放端口</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=<span class="keyword">public</span> --add-port=<span class="number">2375</span>/tcp --permanent</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>Idea安装<strong>docker</strong>插件,重启<br><img src="https://img-blog.csdnimg.cn/20191006091416311.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+<li>连接远程docker<br>(1) 编辑配置<br><img src="https://img-blog.csdnimg.cn/2019100609145883.jpg" alt="在这里插入图片描述"><br>(2) 填远程docker地址<br><img src="https://img-blog.csdnimg.cn/20191006091526731.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>(3) 连接成功，会列出远程docker容器和镜像<br><img src="https://img-blog.csdnimg.cn/20191006091552984.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ol>
+<h2 id="二、新建项目"><a href="#二、新建项目" class="headerlink" title="二、新建项目"></a>二、新建项目</h2><ol>
+<li>创建springboot项目</li>
+</ol>
+<p>项目结构图<br><img src="https://img-blog.csdnimg.cn/20191006091643540.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>(1) 配置pom文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;project xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">         xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span><br><span class="line">    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line">    &lt;parent&gt;</span><br><span class="line">        &lt;groupId&gt;com.fengqi&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;dockerDemo&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.0.0&lt;/version&gt;</span><br><span class="line">        &lt;relativePath&gt;../pom.xml&lt;/relativePath&gt; &lt;!-- lookup parent from repository --&gt;</span><br><span class="line">    &lt;/parent&gt;</span><br><span class="line">    &lt;groupId&gt;com.fengqi&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;web&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0.0&lt;/version&gt;</span><br><span class="line">    &lt;name&gt;web&lt;/name&gt;</span><br><span class="line">    &lt;description&gt;Demo project for Spring Boot&lt;/description&gt;</span><br><span class="line">    </span><br><span class="line">  &lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">            &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;log4j&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;log4j&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.2.17&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">    &lt;/dependencies&gt;</span><br><span class="line"></span><br><span class="line">    &lt;build&gt;</span><br><span class="line">        &lt;plugins&gt;</span><br><span class="line">            &lt;plugin&gt;</span><br><span class="line">                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">            &lt;/plugin&gt;</span><br><span class="line">            &lt;plugin&gt;</span><br><span class="line">                &lt;groupId&gt;com.spotify&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;docker-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">                &lt;version&gt;1.0.0&lt;/version&gt;</span><br><span class="line">                &lt;configuration&gt;</span><br><span class="line">                    &lt;dockerDirectory&gt;src/main/docker&lt;/dockerDirectory&gt;</span><br><span class="line">                    &lt;resources&gt;</span><br><span class="line">                        &lt;resource&gt;</span><br><span class="line">                            &lt;targetPath&gt;/&lt;/targetPath&gt;</span><br><span class="line">                            &lt;directory&gt;$&#123;project.build.directory&#125;&lt;/directory&gt;</span><br><span class="line">                            &lt;include&gt;$&#123;project.build.finalName&#125;.jar&lt;/include&gt;</span><br><span class="line">                        &lt;/resource&gt;</span><br><span class="line">                    &lt;/resources&gt;</span><br><span class="line">                &lt;/configuration&gt;</span><br><span class="line">            &lt;/plugin&gt;</span><br><span class="line">            &lt;plugin&gt;</span><br><span class="line">                &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;</span><br><span class="line">                &lt;executions&gt;</span><br><span class="line">                    &lt;execution&gt;</span><br><span class="line">                        &lt;phase&gt;package&lt;/phase&gt;</span><br><span class="line">                        &lt;configuration&gt;</span><br><span class="line">                            &lt;tasks&gt;</span><br><span class="line">                                &lt;copy todir="src/main/docker" file="target/$&#123;project.artifactId&#125;-$&#123;project.version&#125;.$&#123;project.packaging&#125;"&gt;&lt;/copy&gt;</span><br><span class="line">                            &lt;/tasks&gt;</span><br><span class="line">                        &lt;/configuration&gt;</span><br><span class="line">                        &lt;goals&gt;</span><br><span class="line">                            &lt;goal&gt;run&lt;/goal&gt;</span><br><span class="line">                        &lt;/goals&gt;</span><br><span class="line">                    &lt;/execution&gt;</span><br><span class="line">                &lt;/executions&gt;</span><br><span class="line">            &lt;/plugin&gt;</span><br><span class="line">        &lt;/plugins&gt;</span><br><span class="line">    &lt;/build&gt;</span><br></pre></td></tr></table></figure>
+
+<p>(2) 在src/main目录下创建docker目录，并创建Dockerfile文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FROM openjdk:<span class="number">8</span>-jdk-alpine</span><br><span class="line">ADD *.jar app.jar</span><br><span class="line">ENTRYPOINT [<span class="string">"java"</span>,<span class="string">"-Djava.security.egd=file:/dev/./urandom"</span>,<span class="string">"-jar"</span>,<span class="string">"/app.jar"</span>]</span><br></pre></td></tr></table></figure>
+
+<p>(3) 在resource目录下创建application.properties文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">logging.config=classpath:logback.xml</span><br><span class="line">logging.path=/home/developer/app/logs/</span><br><span class="line">server.port=<span class="number">8990</span></span><br></pre></td></tr></table></figure>
+
+<p>(4) 创建DockerApplication文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DockerApplication</span> </span>&#123;</span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"> SpringApplication.run(DockerApplication.class, args);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(5) 创建DockerController文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DockerController</span> </span>&#123;</span><br><span class="line"> <span class="keyword">static</span> Log log = LogFactory.getLog(DockerController.class);</span><br><span class="line"> <span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line"> <span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">()</span> </span>&#123;</span><br><span class="line"> log.info(<span class="string">"Hello Docker!"</span>);</span><br><span class="line"> <span class="keyword">return</span> <span class="string">"Hello Docker!"</span>;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(6) 增加配置<br><img src="https://img-blog.csdnimg.cn/20191006091954238.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191006092002910.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>命令解释<br>Image tag : 指定镜像名称和tag，镜像名称为 docker-demo，tag为1.1<br>Bind ports : 绑定宿主机端口到容器内部端口。格式为[宿主机端口]:[容器内部端口]<br>Bind mounts : 将宿主机目录挂到到容器内部目录中。格式为[宿主机目录]:[容器内部目录]。这个springboot项目会将日志打印在容器 /home/developer/app/logs/ 目录下，将宿主机目录挂载到容器内部目录后，那么日志就会持久化容器外部的宿主机目录中。</strong></p>
+<p>(7) Maven打包<br><img src="https://img-blog.csdnimg.cn/20191006092051828.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>(8) 运行<br><img src="https://img-blog.csdnimg.cn/20191006092345561.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191006092407773.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdGVkZQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>这里我们可以看到镜像名称为docker-demo:1.1，docker容器为docker-server</p>
+<blockquote>
+<p>参考<a href="https://www.toutiao.com/i6702260511217549832/" target="_blank" rel="noopener">https://www.toutiao.com/i6702260511217549832/</a> 文章，有改动</p>
+</blockquote>
 
       
     </div>
@@ -434,6 +475,8 @@
       
         <div class="post-tags">
           
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
             <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
           
         </div>
@@ -447,8 +490,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/20/Hexo使用Next主题/" rel="next" title="使用Hexo和Gitpage搭建博客(二)">
-                <i class="fa fa-chevron-left"></i> 使用Hexo和Gitpage搭建博客(二)
+              <a href="/2019/10/05/SpringBoot读取外部配置文件/" rel="next" title="SpringBoot读取外部配置文件">
+                <i class="fa fa-chevron-left"></i> SpringBoot读取外部配置文件
               </a>
             
           </div>
@@ -456,10 +499,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/06/Idea远程一键部署springboot到Docker/" rel="prev" title="Idea远程一键部署springboot到Docker">
-                Idea远程一键部署springboot到Docker <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -603,7 +642,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#展示"><span class="nav-number">1.</span> <span class="nav-text">展示</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Idea是Java开发利器，springboot是Java生态中最流行的微服务框架，docker是时下最火的容器技术，那么它们结合在一起会产生什么化学反应呢？"><span class="nav-number">1.</span> <span class="nav-text">Idea是Java开发利器，springboot是Java生态中最流行的微服务框架，docker是时下最火的容器技术，那么它们结合在一起会产生什么化学反应呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、-开发前准备"><span class="nav-number">2.</span> <span class="nav-text">一、 开发前准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、新建项目"><span class="nav-number">3.</span> <span class="nav-text">二、新建项目</span></a></li></ol></div>
             
 
           </div>
