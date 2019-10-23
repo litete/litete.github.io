@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="李特个人博客">
 <meta property="og:description" content="出于程序员的本能，我尝试在外网上搭建了一个VPN（搭建成功后就删除了，证明自己搭建成功过就满足了），现在记录一下步骤一、 购买服务器  经过筛选，我选择了vultr服务器，每月5美元，建议地址选Tokyo，操作系统选centos7，最好不要选8，配置选最小即可，然后部署服务器二、 部署shadowsocks 这里使用的是秋水逸冰的Python版一键安装脚本，使用方法如下： 1. 使用root用户，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-23T03:04:39.016Z">
+<meta property="og:updated_time" content="2019-10-23T03:10:45.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vps搭建shadowsocks">
 <meta name="twitter:description" content="出于程序员的本能，我尝试在外网上搭建了一个VPN（搭建成功后就删除了，证明自己搭建成功过就满足了），现在记录一下步骤一、 购买服务器  经过筛选，我选择了vultr服务器，每月5美元，建议地址选Tokyo，操作系统选centos7，最好不要选8，配置选最小即可，然后部署服务器二、 部署shadowsocks 这里使用的是秋水逸冰的Python版一键安装脚本，使用方法如下： 1. 使用root用户，">
@@ -378,15 +378,12 @@
         <h1 id="出于程序员的本能，我尝试在外网上搭建了一个VPN（搭建成功后就删除了，证明自己搭建成功过就满足了），现在记录一下步骤"><a href="#出于程序员的本能，我尝试在外网上搭建了一个VPN（搭建成功后就删除了，证明自己搭建成功过就满足了），现在记录一下步骤" class="headerlink" title="出于程序员的本能，我尝试在外网上搭建了一个VPN（搭建成功后就删除了，证明自己搭建成功过就满足了），现在记录一下步骤"></a>出于程序员的本能，我尝试在外网上搭建了一个VPN（搭建成功后就删除了，证明自己搭建成功过就满足了），现在记录一下步骤</h1><p>一、 购买服务器 </p>
 <pre><code>经过筛选，我选择了vultr服务器，每月5美元，建议地址选Tokyo，操作系统选centos7，最好不要选8，配置选最小即可，然后部署服务器</code></pre><p>二、 部署shadowsocks</p>
 <pre><code>这里使用的是秋水逸冰的Python版一键安装脚本，使用方法如下：
-1. 使用root用户，运行如下命令</code></pre><blockquote>
-<p>wget –no-check-certificate -O shadowsocks.sh <a href="https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</a><br>chmod +x shadowsocks.sh<br>./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</p>
-</blockquote>
+1. 使用root用户，运行如下命令</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O shadowsocks.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
+
 <p>其中需要输入一些信息如IP、Port、password等，均可自己定义</p>
 <p>安装完成后，脚本提示如下：</p>
-<blockquote>
-<p>Congratulations, Shadowsocks-python server install completed!<br>Your Server IP        :your_server_ip<br>Your Server Port      :your_server_port<br>Your Password         :your_password<br>Your Encryption Method:your_encryption_method</p>
-</blockquote>
-<p>Welcome to visit:<a href="https://teddysun.com/342.html" target="_blank" rel="noopener">https://teddysun.com/342.html</a><br>Enjoy it!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> Congratulations, Shadowsocks-python server install completed!</span><br><span class="line">Your Server IP        :your_server_ip</span><br><span class="line">Your Server Port      :your_server_port</span><br><span class="line">Your Password         :your_password</span><br><span class="line">Your Encryption Method:your_encryption_method</span><br><span class="line"></span><br><span class="line">Welcome to visit:https://teddysun.com/342.html</span><br><span class="line">Enjoy it!</span><br></pre></td></tr></table></figure>
+
 <p>单用户配置文件示例：<br>配置文件路径：/etc/shadowsocks.json</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;:&quot;0.0.0.0&quot;,</span><br><span class="line">    &quot;server_port&quot;:your_server_port,</span><br><span class="line">    &quot;local_address&quot;:&quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;local_port&quot;:1080,</span><br><span class="line">    &quot;password&quot;:&quot;your_password&quot;,</span><br><span class="line">    &quot;timeout&quot;:300,</span><br><span class="line">    &quot;method&quot;:&quot;your_encryption_method&quot;,</span><br><span class="line">    &quot;fast_open&quot;: false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
