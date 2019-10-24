@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="李特个人博客">
 <meta property="og:description" content="环境: JDK8 String先看String类的定义 12public final class String    implements java.io.Serializable, Comparable&amp;lt;String&amp;gt;, CharSequence  可以看到String类被final修饰,因此不能被继承.String类还实现了序列化接口Serializable,可比较的接口Compa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-24T09:00:25.959Z">
+<meta property="og:updated_time" content="2019-10-24T09:33:45.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="String类常用方法源码分析">
 <meta name="twitter:description" content="环境: JDK8 String先看String类的定义 12public final class String    implements java.io.Serializable, Comparable&amp;lt;String&amp;gt;, CharSequence  可以看到String类被final修饰,因此不能被继承.String类还实现了序列化接口Serializable,可比较的接口Compa">
@@ -477,6 +477,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. **StringJoiner 类也是jdk1.8开始加入的通过分隔符或前缀或后缀来构造字符串的，底层是字符序列的拷贝。**</span><br><span class="line"></span><br><span class="line">2. requireNonNull方法校验参数不能为空,否则抛异常.源码:</span><br></pre></td></tr></table></figure>
 
 <p>public static <t> T requireNonNull(T obj) {<br>        if (obj == null)<br>            throw new NullPointerException();<br>        return obj;<br>}<br>```</t></p>
+<p>==============================================</p>
+<p>参考文章: <a href="https://blog.csdn.net/u011726984/article/details/51326697" target="_blank" rel="noopener">https://blog.csdn.net/u011726984/article/details/51326697</a></p>
 
       
     </div>
