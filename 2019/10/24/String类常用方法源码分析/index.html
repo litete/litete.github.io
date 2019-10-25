@@ -90,7 +90,7 @@
 <meta property="og:description" content="环境: JDK8 String先看String类的定义 12public final class String    implements java.io.Serializable, Comparable&amp;lt;String&amp;gt;, CharSequence  可以看到String类被final修饰,因此不能被继承.String类还实现了序列化接口Serializable,可比较的接口Compa">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20191024145625743.png">
-<meta property="og:updated_time" content="2019-10-25T07:58:01.794Z">
+<meta property="og:updated_time" content="2019-10-25T08:06:33.683Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="String类常用方法源码分析">
 <meta name="twitter:description" content="环境: JDK8 String先看String类的定义 12public final class String    implements java.io.Serializable, Comparable&amp;lt;String&amp;gt;, CharSequence  可以看到String类被final修饰,因此不能被继承.String类还实现了序列化接口Serializable,可比较的接口Compa">
@@ -546,9 +546,9 @@
 <p>问:至于为什么要传入被搜索字符串的长度?<br>答:为了保证在fromIndex的值一定要大于等于rightIndex,从而使fromIndex = rightIndex</p>
 </blockquote>
 <ol start="3">
-<li>提前要说一下: 此方法是按照被搜索字符从右往左的顺序匹配目标字符的的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int strLastIndex = targetOffset + targetCount - 1;</span><br><span class="line">char strLastChar = target[strLastIndex];</span><br><span class="line">int min = sourceOffset + targetCount - 1;</span><br><span class="line">int i = min + fromIndex;</span><br></pre></td></tr></table></figure>
-</li>
+<li>提前要说一下: 此方法是按照被搜索字符从右往左的顺序匹配目标字符的的</li>
 </ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int strLastIndex = targetOffset + targetCount - 1;</span><br><span class="line">char strLastChar = target[strLastIndex];</span><br><span class="line">int min = sourceOffset + targetCount - 1;</span><br><span class="line">int i = min + fromIndex;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <ul>
@@ -610,6 +610,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/25/Switch对String的支持/" rel="prev" title="Switch对String的支持">
+                Switch对String的支持 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -691,7 +695,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
