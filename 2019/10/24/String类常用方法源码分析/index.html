@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="李特个人博客">
 <meta property="og:description" content="环境: JDK8 String先看String类的定义 12public final class String    implements java.io.Serializable, Comparable&amp;lt;String&amp;gt;, CharSequence  可以看到String类被final修饰,因此不能被继承.String类还实现了序列化接口Serializable,可比较的接口Compa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-24T09:33:45.475Z">
+<meta property="og:updated_time" content="2019-10-25T07:04:36.985Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="String类常用方法源码分析">
 <meta name="twitter:description" content="环境: JDK8 String先看String类的定义 12public final class String    implements java.io.Serializable, Comparable&amp;lt;String&amp;gt;, CharSequence  可以看到String类被final修饰,因此不能被继承.String类还实现了序列化接口Serializable,可比较的接口Compa">
@@ -476,8 +476,88 @@
 <p>public static String join(CharSequence delimiter, CharSequence… elements) {<br>        Objects.requireNonNull(delimiter);<br>        Objects.requireNonNull(elements);<br>        // Number of elements not likely worth Arrays.stream overhead.<br>        StringJoiner joiner = new StringJoiner(delimiter);<br>        for (CharSequence cs: elements) {<br>            joiner.add(cs);<br>        }<br>        return joiner.toString();<br>}</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. **StringJoiner 类也是jdk1.8开始加入的通过分隔符或前缀或后缀来构造字符串的，底层是字符序列的拷贝。**</span><br><span class="line"></span><br><span class="line">2. requireNonNull方法校验参数不能为空,否则抛异常.源码:</span><br></pre></td></tr></table></figure>
 
-<p>public static <t> T requireNonNull(T obj) {<br>        if (obj == null)<br>            throw new NullPointerException();<br>        return obj;<br>}<br>```</t></p>
-<p>==============================================</p>
+<p>public static <t> T requireNonNull(T obj) {<br>        if (obj == null)<br>            throw new NullPointerException();<br>        return obj;<br>}</t></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## lastIndexOf</span><br><span class="line"> lastIndexOf(String str)与lastIndexOf(String str, int fromIndex) </span><br><span class="line"></span><br><span class="line">&gt; lastIndexOf(String str)方法返回字符串str在String中最后出现的起始的位置</span><br><span class="line">&gt; lastIndexOf(String str, int fromIndex)方法返回在fromIndex位置之后字符串str在String中最后出现的起始的位置</span><br><span class="line"></span><br><span class="line">lastIndexOf(String str)源码:</span><br></pre></td></tr></table></figure>
+
+<p>public int lastIndexOf(String str) {<br>        return lastIndexOf(str, value.length);<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">lastIndexOf(String str, int fromIndex)源码:</span><br></pre></td></tr></table></figure>
+
+<p>public int lastIndexOf(String str, int fromIndex) {<br>        return lastIndexOf(value, 0, value.length,<br>                str.value, 0, str.value.length, fromIndex);<br>    }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">由上可见,lastIndexOf(String str)也是调用的lastIndexOf(String str, int fromIndex)方法,只不过fromIndex参数是String的长度</span><br><span class="line">&gt; 看到这时会产生一个疑问,fromIndex是String的长度了,那怎么还能查到lastIndexOf的值呢? 带着这个疑问,继续往下看</span><br></pre></td></tr></table></figure>
+
+<p>static int lastIndexOf(char[] source, int sourceOffset, int sourceCount,<br>            char[] target, int targetOffset, int targetCount,<br>            int fromIndex) {</p>
+<pre><code>    int rightIndex = sourceCount - targetCount;
+    if (fromIndex &lt; 0) {
+        return -1;
+    }
+    if (fromIndex &gt; rightIndex) {
+        fromIndex = rightIndex;
+    }
+    /* Empty string always matches. */
+    if (targetCount == 0) {
+        return fromIndex;
+    }
+
+    int strLastIndex = targetOffset + targetCount - 1;
+    char strLastChar = target[strLastIndex];
+    int min = sourceOffset + targetCount - 1;
+    int i = min + fromIndex;
+
+startSearchForLastChar:
+    while (true) {
+        while (i &gt;= min &amp;&amp; source[i] != strLastChar) {
+            i--;
+        }
+        if (i &lt; min) {
+            return -1;
+        }
+        int j = i - 1;
+        int start = j - (targetCount - 1);
+        int k = strLastIndex - 1;
+
+        while (j &gt; start) {
+            if (source[j--] != target[k--]) {
+                i--;
+                continue startSearchForLastChar;
+            }
+        }
+        return start - sourceOffset + 1;
+    }
+}</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">我们来逐步解析源码</span><br><span class="line"></span><br><span class="line">1. </span><br><span class="line">- source : 被搜索的字符</span><br><span class="line">- sourceOffset :  源字符串的偏移量</span><br><span class="line">- sourceCount :  源字符串的计数</span><br><span class="line">- target : 要搜索的字符</span><br><span class="line">- targetOffset : 目标字符串的偏移量</span><br><span class="line">- targetCount : 目标字符串的计数</span><br><span class="line">- fromIndex: 从index开始搜索的索引</span><br><span class="line">2.</span><br></pre></td></tr></table></figure>
+
+<p>int rightIndex = sourceCount - targetCount;</p>
+<p> if (fromIndex &gt; rightIndex) {<br>            fromIndex = rightIndex;<br>        }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rightIndex为被搜索字符与目标字符的差,我们可以先假设目标字符在被搜索字符的最后位置,假如此时fromIndex是上面的疑问中的被搜索字符的长度,那么就将这个差值赋值给fromIndex.</span><br><span class="line">&gt; 问:至于为什么要传入被搜索字符串的长度?      </span><br><span class="line">&gt; 答:为了保证在fromIndex的值一定要大于等于rightIndex,从而使fromIndex = rightIndex</span><br><span class="line"></span><br><span class="line">3. 提前要说一下: 此方法是按照被搜索字符从右往左的顺序匹配目标字符的的</span><br></pre></td></tr></table></figure>
+
+<pre><code>int strLastIndex = targetOffset + targetCount - 1;
+char strLastChar = target[strLastIndex];
+int min = sourceOffset + targetCount - 1;
+int i = min + fromIndex;</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- strLastIndex : 目标字符最大索引</span><br><span class="line">- strLastChar : 目标字符最大索引出所对应的值</span><br><span class="line">- min : 假设目标字符出现在最左边,min代表此时目标字符在被搜索字符的位置的索引</span><br><span class="line">- i : 被搜索字符的最大索引</span><br><span class="line"></span><br><span class="line">4.</span><br></pre></td></tr></table></figure>
+
+<p>startSearchForLastChar:<br>        while (true) {<br>            while (i &gt;= min &amp;&amp; source[i] != strLastChar) {<br>                i–;<br>            }<br>            if (i &lt; min) {<br>                return -1;<br>            }<br>            int j = i - 1;<br>            int start = j - (targetCount - 1);<br>            int k = strLastIndex - 1;</p>
+<pre><code>    while (j &gt; start) {
+        if (source[j--] != target[k--]) {
+            i--;
+            continue startSearchForLastChar;
+        }
+    }
+    return start - sourceOffset + 1;
+}</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">中</span><br></pre></td></tr></table></figure>
+
+<p> while (i &gt;= min &amp;&amp; source[i] != strLastChar) {<br>                i–;<br>            }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">为了从右往左查找目标字符最后一位出现在被搜索字符的位置</span><br></pre></td></tr></table></figure>
+
+<pre><code>int j = i - 1;
+int start = j - (targetCount - 1);
+int k = strLastIndex - 1;
+
+while (j &gt; start) {
+    if (source[j--] != target[k--]) {
+        i--;
+        continue startSearchForLastChar;
+    }
+}</code></pre><p>```<br>继续从右往左第二位开始匹配,这里就不多说了.        </p>
+<hr>
 <p>参考文章: <a href="https://blog.csdn.net/u011726984/article/details/51326697" target="_blank" rel="noopener">https://blog.csdn.net/u011726984/article/details/51326697</a></p>
 
       
