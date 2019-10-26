@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.litede.cn/"/>
-  <updated>2019-10-26T06:06:18.913Z</updated>
+  <updated>2019-10-26T06:16:58.360Z</updated>
   <id>http://www.litede.cn/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常用集合类(三) -- ArrayList</title>
+    <link href="http://www.litede.cn/2019/10/26/%E5%B8%B8%E7%94%A8%E9%9B%86%E5%90%88%E7%B1%BB-%E4%B8%89-ArrayList/"/>
+    <id>http://www.litede.cn/2019/10/26/常用集合类-三-ArrayList/</id>
+    <published>2019-10-26T06:15:54.000Z</published>
+    <updated>2019-10-26T06:16:58.360Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>ArrayList继承自[abstractList]{} 是线程不安全的。</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;ArrayList继承自[abstractList]{} 是线程不安全的。&lt;/strong&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://www.litede.cn/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://www.litede.cn/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用集合类(二) -- AbstractList</title>
+    <link href="http://www.litede.cn/2019/10/26/%E5%B8%B8%E7%94%A8%E9%9B%86%E5%90%88%E7%B1%BB-%E4%BA%8C%20--%20AbstractList/"/>
+    <id>http://www.litede.cn/2019/10/26/常用集合类-二 -- AbstractList/</id>
+    <published>2019-10-26T06:07:33.000Z</published>
+    <updated>2019-10-26T06:15:06.425Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>ArrayList和LinkedList都继承自abstractList 都是线程不安全的。</strong></p><ul><li>abstractList 提供checkForComodification方法（next，add，remove方法中都有调用此方法），在单线程中，遍历的时候删除List（for循环和增强for循环都不是正确做法，迭代器遍历才是正确的，博客后面有例子声明）。当两个线程有冲突时，（当一个线程使用迭代器遍历的时候，另一线程add，remove时，都会改变modcount值。）会抛出ConcurrentModificationException异常。</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">private void checkForComodification() &#123;</span><br><span class="line">    if (this.modCount != l.modCount)</span><br><span class="line">        throw new ConcurrentModificationException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;ArrayList和LinkedList都继承自abstractList 都是线程不安全的。&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;abstractList 提供checkForComodification方法（next，add，remove方法中都有
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://www.litede.cn/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://www.litede.cn/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>常用集合类(一) -- 综述</title>
