@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="李特个人博客">
 <meta property="og:description" content="transienttransient的作用及使用方法java中的transient关键字为我们提供了便利,只需要实现Serilizable接口,将不需要序列化的属性前天健关键字transient,序列化对象的时候,这个属性就不会序列化到指定的目的地中. 示例code如下： 123456789101112131415161718192021222324252627282930313233343536">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-26T01:20:15.755Z">
+<meta property="og:updated_time" content="2019-10-26T01:21:33.710Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java中各种关键字">
 <meta name="twitter:description" content="transienttransient的作用及使用方法java中的transient关键字为我们提供了便利,只需要实现Serilizable接口,将不需要序列化的属性前天健关键字transient,序列化对象的时候,这个属性就不会序列化到指定的目的地中. 示例code如下： 123456789101112131415161718192021222324252627282930313233343536">
@@ -449,7 +449,7 @@
 </ol>
 <p>答：no，如果一个方法内在执行try{}语句之前就已经return了，那么finally语句指定不会执行了。因为它根本没有进入try语句中如果在一个try语句中调用System.exit(0);方法，那么就会退出当前java虚拟机，那么finally也就没有执行的机会了。</p>
 <ol start="2">
-<li>finally在return之前执行还是在return之后执行？<br>答：很多人可能会说在return执行之前执行。我的答案是在return中间执行，是不是很特别。具体参见java中finally执行顺序</li>
+<li>finally在return之前执行还是在return之后执行？<br>答：很多人可能会说在return执行之前执行。我的答案是在return中间执行，是不是很特别。具体参见[java中finally执行顺序]{<a href="https://www.cnblogs.com/xiohao/p/4278405.html}" target="_blank" rel="noopener">https://www.cnblogs.com/xiohao/p/4278405.html}</a></li>
 </ol>
 <p>观察以下代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">package FileUtil;</span><br><span class="line"></span><br><span class="line">public class finallyTest &#123;</span><br><span class="line">    public static int method()&#123;</span><br><span class="line">        int x=1;</span><br><span class="line">        try&#123;</span><br><span class="line">            return x;</span><br><span class="line">        &#125;catch(Exception e)</span><br><span class="line">        &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;finally&#123;</span><br><span class="line">            ++x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static int method2()&#123;</span><br><span class="line">        int x=1;</span><br><span class="line">        try&#123;</span><br><span class="line">            return x++;</span><br><span class="line">        &#125;catch(Exception e)</span><br><span class="line">        &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;finally&#123;</span><br><span class="line">            return ++x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(method());//1</span><br><span class="line">        System.out.println(method2());//3</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -497,6 +497,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/26/常用集合类(一)/" rel="prev" title="常用集合类(一)">
+                常用集合类(一) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -578,7 +582,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
