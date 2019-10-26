@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.litede.cn/"/>
-  <updated>2019-10-25T09:47:45.093Z</updated>
+  <updated>2019-10-26T00:54:15.154Z</updated>
   <id>http://www.litede.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java中几种常量池</title>
+    <link href="http://www.litede.cn/2019/10/26/Java%E4%B8%AD%E5%87%A0%E7%A7%8D%E5%B8%B8%E9%87%8F%E6%B1%A0/"/>
+    <id>http://www.litede.cn/2019/10/26/Java中几种常量池/</id>
+    <published>2019-10-26T00:35:53.000Z</published>
+    <updated>2019-10-26T00:54:15.154Z</updated>
+    
+    <content type="html"><![CDATA[<p>在java的内存分配中,经常听到很多关于常量池的描述,我开始看的时候也是看的很模糊,网上五花八门的说法太多了,最后查阅&lt;&lt;深入了解JAVA虚拟机&gt;&gt;,差不多是理清了,很多网上说法都是有问题的,下面我就来区分一下这几个概念.</p><h1 id="全局字符串池-String-pool也叫做string-literal-pool"><a href="#全局字符串池-String-pool也叫做string-literal-pool" class="headerlink" title="全局字符串池(String pool也叫做string literal pool)"></a>全局字符串池(String pool也叫做string literal pool)</h1><p>全局字符串池里的内容是在类加载完成,经过验证.,准备阶段之后在<strong>堆</strong>中生成的字符串对象实例,然后将该字符串对象实例的引用值存到string pool中(<strong>记住:string pool中村的是引用值而不是具体的实例对象,具体的实例对象实在对中开辟的一块内存空间存放的</strong>).</p><p>在HotSpot VM里实现的string pool功能的是一个StringTable类,它是一个哈希表,里面存的是驻留字符串(也就是我们常说的用双括号引起来的)的引用(而不是驻留字符串实例本身),也就是说在堆中的某些字符串实例被这个StringTable引用之后就等同被赋予了”驻留字符串”的身份.这个StringTable在每个HotSpot VM的实例只有一份,被所有的类共享.</p><h1 id="class文件常量池-class-constant-pool"><a href="#class文件常量池-class-constant-pool" class="headerlink" title="class文件常量池(class constant pool)"></a>class文件常量池(class constant pool)</h1><p>我们都知道,class文件中除了包含类的版本,字段,方法,接口等描述信息外,还有一项信息就是常量池(constant pool table),用于存放编译器生成的<strong>各种字面量(Literal)和符号引用(Symbolic References)</strong>.</p><p>字面量就是我们常说的<strong>常量</strong>概念,如文本字符串,被声明的final的常量值等.</p><p><strong>符号引用</strong>是一组符号来描述所引用的目标,符号可以是任何形式的字面量,只要使用时能无歧义的定位到目标即可(它与直接引用区分一下,直接引用一般是指向方法区的本地指针,相对于偏移量或是一个能间接定位到目标的句柄).一般包括下面三类常量:</p><ul><li>类和接口的全限定名</li><li>字段的名称和描述符</li><li>方法的名称和描述符</li></ul><p>常量池的每一项常量就是一个表,一共有如下表所示的11种各不相同的表结构数据，这每个表开始的第一位都是一个字节的标志位（取值1-12），代表当前这个常量属于哪种常量类型。<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL2kxMzcyLnBob3RvYnVja2V0LmNvbS9hbGJ1bXMvYWczMzMvRW1hbnVlbGluZy9ibG9nLzIwMTUtNy0yOC9jb25zdGFudC10YWJsZS1pbmZvX3pwc3FldGVta2cwLnBuZw?x-oss-process=image/format,png" alt="在这里插入图片描述"><br>每种不同类型的常量类型具有不同的结构，具体的结构本文就先不叙述了，本文着重区分这三个常量池的概念（读者若想深入了解每种常量类型的数据结构可以查看《深入理解java虚拟机》第六章的内容）。</p><h1 id="运行时常量池（runtime-constant-pool）"><a href="#运行时常量池（runtime-constant-pool）" class="headerlink" title="运行时常量池（runtime constant pool）"></a>运行时常量池（runtime constant pool）</h1><p>当java文件被编译成class文件之后，也就是会生成我上面所说的class常量池，那么运行时常量池又是什么时候产生的呢？</p><p>jvm在执行某个类的时候，必须经过加载、连接、初始化，而连接又包括验证、准备、解析三个阶段。而当类加载到内存中后，jvm就会将class常量池中的内容存放到运行时常量池中，由此可知，运行时常量池也是每个类都有一个。在上面我也说了，class常量池中存的是字面量和符号引用，也就是说他们存的并不是对象的实例，而是对象的符号引用值。而经过解析（resolve）之后，也就是把符号引用替换为直接引用，解析的过程会去查询全局字符串池，也就是我们上面所说的StringTable，以保证运行时常量池所引用的字符串与全局字符串池中所引用的是一致的。</p><p>举个实例来说明一下:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String str1 = &quot;abc&quot;;</span><br><span class="line">String str2 = new String(&quot;def&quot;);</span><br><span class="line">String str3 = &quot;abc&quot;;</span><br><span class="line">String str4 = str2.intern();</span><br><span class="line">String str5 = &quot;def&quot;;</span><br><span class="line">System.out.println(str1 == str3);//true</span><br><span class="line">System.out.println(str2 == str4);//false</span><br><span class="line">System.out.println(str4 == str5);//true</span><br></pre></td></tr></table></figure><p>上面程序的首先经过编译之后，在该类的class常量池中存放一些符号引用，然后类加载之后，将class常量池中存放的符号引用转存到运行时常量池中，然后经过验证，准备阶段之后，在堆中生成驻留字符串的实例对象（也就是上例中str1所指向的”abc”实例对象），然后将这个对象的引用存到全局String Pool中，也就是StringTable中，最后在解析阶段，要把运行时常量池中的符号引用替换成直接引用，那么就直接查询StringTable，保证StringTable里的引用值与运行时常量池中的引用值一致，大概整个过程就是这样了。</p><p>回到上面的那个程序，现在就很容易解释整个程序的内存分配过程了，首先，在堆中会有一个”abc”实例，全局StringTable中存放着”abc”的一个引用值，然后在运行第二句的时候会生成两个实例，一个是”def”的实例对象，并且StringTable中存储一个”def”的引用值，还有一个是new出来的一个”def”的实例对象，与上面那个是不同的实例，当在解析str3的时候查找StringTable，里面有”abc”的全局驻留字符串引用，所以str3的引用地址与之前的那个已存在的相同，str4是在运行的时候调用intern()函数，返回StringTable中”def”的引用值，如果没有就将str2的引用值添加进去，在这里，StringTable中已经有了”def”的引用值了，所以返回上面在new str2的时候添加到StringTable中的 “def”引用值，最后str5在解析的时候就也是指向存在于StringTable中的”def”的引用值，那么这样一分析之后，下面三个打印的值就容易理解了。</p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol><li>全局常量池在每个VM中只有一份，存放的是字符串常量的引用值。</li><li>class常量池是在编译的时候每个class都有的，在编译阶段，存放的是常量的符号引用。</li><li>运行时常量池是在类加载完成之后，将每个class常量池中的符号引用值转存到运行时常量池中，也就是说，每个class都有一个运行时常量池，类在解析之后，将符号引用替换成直接引用，与全局常量池中的引用值保持一致。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在java的内存分配中,经常听到很多关于常量池的描述,我开始看的时候也是看的很模糊,网上五花八门的说法太多了,最后查阅&amp;lt;&amp;lt;深入了解JAVA虚拟机&amp;gt;&amp;gt;,差不多是理清了,很多网上说法都是有问题的,下面我就来区分一下这几个概念.&lt;/p&gt;
+&lt;h1 id=&quot;全
+      
+    
+    </summary>
+    
+    
+      <category term="jvm" scheme="http://www.litede.cn/categories/jvm/"/>
+    
+    
+      <category term="jvm" scheme="http://www.litede.cn/tags/jvm/"/>
+    
+  </entry>
   
   <entry>
     <title>JAVA 两个对象不同为什么他们的hashcode有可能相同</title>

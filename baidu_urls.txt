@@ -1,3 +1,4 @@
+http://www.litede.cn/2019/10/26/Java中几种常量池/
 http://www.litede.cn/2019/10/25/JAVA-两个对象不同为什么他们的hashcode有可能相同/
 http://www.litede.cn/2019/10/25/Switch对String的支持/
 http://www.litede.cn/2019/10/24/String类常用方法源码分析/
