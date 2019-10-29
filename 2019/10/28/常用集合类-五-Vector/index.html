@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="李特个人博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="介绍123public class Vector&amp;lt;E&amp;gt;    extends AbstractList&amp;lt;E&amp;gt;    implements List&amp;lt;E&amp;gt;, RandomAccess, Cloneable, java.io.Serializable   Vector 是矢量队列，它是JDK1.0版本添加的类。继承于AbstractList，实现了List, Ran">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用集合类(五) -- Vector">
+<meta property="og:url" content="http://www.litede.cn/2019/10/28/常用集合类-五-Vector/index.html">
+<meta property="og:site_name" content="李特个人博客">
+<meta property="og:description" content="介绍123public class Vector&amp;lt;E&amp;gt;    extends AbstractList&amp;lt;E&amp;gt;    implements List&amp;lt;E&amp;gt;, RandomAccess, Cloneable, java.io.Serializable   Vector 是矢量队列，它是JDK1.0版本添加的类。继承于AbstractList，实现了List, Ran">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-29T02:27:29.815Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用集合类(五) -- Vector">
+<meta name="twitter:description" content="介绍123public class Vector&amp;lt;E&amp;gt;    extends AbstractList&amp;lt;E&amp;gt;    implements List&amp;lt;E&amp;gt;, RandomAccess, Cloneable, java.io.Serializable   Vector 是矢量队列，它是JDK1.0版本添加的类。继承于AbstractList，实现了List, Ran">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.litede.cn/2019/10/28/常用集合类-五-Vector/">
+
+
+
+
+
+  <title>常用集合类(五) -- Vector | 李特个人博客</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李特个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home                          //首页"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive          //归档"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th           //分类"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags                     //标签"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user                   //关于"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.litede.cn/2019/10/28/常用集合类-五-Vector/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李特">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李特个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">常用集合类(五) -- Vector</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-28T17:09:12+08:00">
+                2019-10-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/28/常用集合类-五-Vector/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/28/常用集合类-五-Vector/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public class Vector&lt;E&gt;</span><br><span class="line">    extends AbstractList&lt;E&gt;</span><br><span class="line">    implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>Vector 是矢量队列，它是JDK1.0版本添加的类。继承于AbstractList，实现了List, RandomAccess, Cloneable这些接口。</li>
+<li>Vector 继承了AbstractList，实现了List；所以，它是一个队列，支持相关的添加、删除、修改、遍历等功能。</li>
+<li>Vector 实现了RandmoAccess接口，即提供了随机访问功能。RandmoAccess是java中用来被List实现，为List提供4快速访问功能的。在Vector中，我们即可以通过元素的序号快速获取元素对象；这就是快速随机访问。</li>
+<li>Vector 实现了Cloneable接口，即实现clone()函数。它能被克隆。</li>
+<li>和ArrayList不同，Vector中的操作是<strong>线程安全</strong>的.其实实现很简单就是在每一个可能发生线程安全的方法加上 <strong>synchronized</strong> 关键字。这样就使得任何时候只有一个线程能够进行读写，这样就保证了线程安全。</li>
+<li><strong>Vector 默认扩容为原来的 2 倍</strong>，而 ArrayList 默认扩容为原来的 1.5 倍</li>
+</ol>
+<h1 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 保存Vector中数据的数组</span><br><span class="line">protected Object[] elementData;</span><br><span class="line">// 实际数据的数量</span><br><span class="line">protected int elementCount;</span><br><span class="line">/**</span><br><span class="line">* 容量增长系数  </span><br><span class="line">* 向量容量自动达到的量</span><br><span class="line">* 当其大小大于其容量时增加。 如果</span><br><span class="line">* 容量增量小于或等于零，</span><br><span class="line">* 容量每次增长时，向量的倍数都会增加一倍。</span><br><span class="line">**/</span><br><span class="line">protected int capacityIncrement;</span><br></pre></td></tr></table></figure>
+
+<h1 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h1><p>Vector一共有4个构造函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public Vector() &#123;</span><br><span class="line">        this(10);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用this方法跳转到下一个构造函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public Vector(int initialCapacity) &#123;</span><br><span class="line">        this(initialCapacity, 0);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用this方法跳转到下一个构造函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> public Vector(int initialCapacity, int capacityIncrement) &#123;</span><br><span class="line">    super();</span><br><span class="line">    if (initialCapacity &lt; 0)</span><br><span class="line">        throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+</span><br><span class="line">                                           initialCapacity);</span><br><span class="line">    this.elementData = new Object[initialCapacity];</span><br><span class="line">    this.capacityIncrement = capacityIncrement;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> public Vector(Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line"> elementData = c.toArray();</span><br><span class="line"> elementCount = elementData.length;</span><br><span class="line"> // c.toArray might (incorrectly) not return Object[] (see 6260652)</span><br><span class="line"> if (elementData.getClass() != Object[].class)</span><br><span class="line">     elementData = Arrays.copyOf(elementData, elementCount, Object[].class);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><h3 id="扩容前兆-检查数量"><a href="#扩容前兆-检查数量" class="headerlink" title="扩容前兆 检查数量"></a>扩容前兆 检查数量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">private void ensureCapacityHelper(int minCapacity) &#123;</span><br><span class="line">    // overflow-conscious code</span><br><span class="line">    if (minCapacity - elementData.length &gt; 0)</span><br><span class="line">        grow(minCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="扩容代码"><a href="#扩容代码" class="headerlink" title="扩容代码"></a>扩容代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">private void grow(int minCapacity) &#123;</span><br><span class="line"></span><br><span class="line">    int oldCapacity = elementData.length;</span><br><span class="line">     // 当Vector的容量不足以容纳当前的全部元素，增加容量大小。</span><br><span class="line">    // 若容量增量系数&gt;0(即capacityIncrement&gt;0)，则将容量增大当capacityIncrement</span><br><span class="line">    // 否则，将容量增大一倍。</span><br><span class="line">    int newCapacity = oldCapacity + ((capacityIncrement &gt; 0) ?</span><br><span class="line">                                     capacityIncrement : oldCapacity);</span><br><span class="line">    if (newCapacity - minCapacity &lt; 0)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    if (newCapacity - MAX_ARRAY_SIZE &gt; 0)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="copyInto-将数组Vector的全部元素都拷贝到数组anArray中"><a href="#copyInto-将数组Vector的全部元素都拷贝到数组anArray中" class="headerlink" title="copyInto : // 将数组Vector的全部元素都拷贝到数组anArray中"></a>copyInto : // 将数组Vector的全部元素都拷贝到数组anArray中</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public synchronized void copyInto(Object[] anArray) &#123;</span><br><span class="line">System.arraycopy(elementData, 0, anArray, 0, elementCount);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ensureCapacity-确定Vector的容量"><a href="#ensureCapacity-确定Vector的容量" class="headerlink" title="ensureCapacity : 确定Vector的容量"></a>ensureCapacity : 确定Vector的容量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public synchronized void ensureCapacity(int minCapacity) &#123;</span><br><span class="line">modCount++;</span><br><span class="line">ensureCapacityHelper(minCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int newCapacity = oldCapacity + ((capacityIncrement &gt; 0) ?</span><br><span class="line">                                        capacityIncrement : oldCapacity);</span><br></pre></td></tr></table></figure>
+
+<p>实现了<strong>容量扩容每次增加一倍的功能</strong></p>
+<h3 id="添加元素的五种方法"><a href="#添加元素的五种方法" class="headerlink" title="添加元素的五种方法"></a>添加元素的五种方法</h3><h4 id="insertElementAt-在指定位置插入一个元素，同步的"><a href="#insertElementAt-在指定位置插入一个元素，同步的" class="headerlink" title="insertElementAt : 在指定位置插入一个元素，同步的"></a>insertElementAt : 在指定位置插入一个元素，同步的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public synchronized void insertElementAt(E obj, int index) &#123;</span><br><span class="line">    modCount++;</span><br><span class="line">    if (index &gt; elementCount) &#123;</span><br><span class="line">        throw new ArrayIndexOutOfBoundsException(index</span><br><span class="line">                                                 + &quot; &gt; &quot; + elementCount);</span><br><span class="line">    &#125;</span><br><span class="line">    ensureCapacityHelper(elementCount + 1);</span><br><span class="line">    System.arraycopy(elementData, index, elementData, index + 1, elementCount - index);</span><br><span class="line">    elementData[index] = obj;</span><br><span class="line">    elementCount++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="addElement-尾部插入元素，同步的"><a href="#addElement-尾部插入元素，同步的" class="headerlink" title="addElement : 尾部插入元素，同步的"></a>addElement : 尾部插入元素，同步的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public synchronized void addElement(E obj) &#123;</span><br><span class="line">    modCount++;</span><br><span class="line">    ensureCapacityHelper(elementCount + 1);</span><br><span class="line">    elementData[elementCount++] = obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void add(int index, E element) &#123;</span><br><span class="line">    insertElementAt(element, index);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="addAll-添加一个集合到尾部，同步的"><a href="#addAll-添加一个集合到尾部，同步的" class="headerlink" title="addAll : 添加一个集合到尾部，同步的"></a>addAll : 添加一个集合到尾部，同步的</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public synchronized boolean addAll(Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line">    modCount++;</span><br><span class="line">    Object[] a = c.toArray();</span><br><span class="line">    int numNew = a.length;</span><br><span class="line">    //扩容，复制到数组后面</span><br><span class="line">    ensureCapacityHelper(elementCount + numNew);</span><br><span class="line">    System.arraycopy(a, 0, elementData, elementCount, numNew);</span><br><span class="line">    elementCount += numNew;</span><br><span class="line">    return numNew != 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="addAll-添加一个结合到指定位置"><a href="#addAll-添加一个结合到指定位置" class="headerlink" title="addAll : 添加一个结合到指定位置"></a>addAll : 添加一个结合到指定位置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public synchronized boolean addAll(int index, Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line">    modCount++;</span><br><span class="line">    if (index &lt; 0 || index &gt; elementCount)</span><br><span class="line">        throw new ArrayIndexOutOfBoundsException(index);</span><br><span class="line"></span><br><span class="line">    Object[] a = c.toArray();</span><br><span class="line">    int numNew = a.length;</span><br><span class="line">    ensureCapacityHelper(elementCount + numNew);</span><br><span class="line"></span><br><span class="line">    //要移动多少个元素</span><br><span class="line">    int numMoved = elementCount - index;</span><br><span class="line">    if (numMoved &gt; 0)</span><br><span class="line">        //把插入位置后面的元素后移这么多位</span><br><span class="line">        System.arraycopy(elementData, index, elementData, index + numNew,</span><br><span class="line">                         numMoved);</span><br><span class="line"></span><br><span class="line">    //复制元素到数组中</span><br><span class="line">    System.arraycopy(a, 0, elementData, index, numNew);</span><br><span class="line">    elementCount += numNew;</span><br><span class="line">    return numNew != 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="add-ListIterator-的添加方法"><a href="#add-ListIterator-的添加方法" class="headerlink" title="add :  ListIterator 的添加方法"></a>add :  ListIterator 的添加方法</h3><p>此方法实在内部类ListItr中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public void add(E e) &#123;</span><br><span class="line">    int i = cursor;</span><br><span class="line">    synchronized (Vector.this) &#123;</span><br><span class="line">        checkForComodification();</span><br><span class="line">        Vector.this.add(i, e);</span><br><span class="line">        expectedModCount = modCount;</span><br><span class="line">    &#125;</span><br><span class="line">    cursor = i + 1;</span><br><span class="line">    lastRet = -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除的9中方法"><a href="#删除的9中方法" class="headerlink" title="删除的9中方法"></a>删除的9中方法</h3><h4 id="removeElementAt-移除index位置的元素"><a href="#removeElementAt-移除index位置的元素" class="headerlink" title="removeElementAt: 移除index位置的元素"></a>removeElementAt: 移除index位置的元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public synchronized void removeElementAt(int index) &#123;</span><br><span class="line">    modCount++;</span><br><span class="line">    if (index &gt;= elementCount) &#123;</span><br><span class="line">        throw new ArrayIndexOutOfBoundsException(index + &quot; &gt;= &quot; +</span><br><span class="line">                                                 elementCount);</span><br><span class="line">    &#125;</span><br><span class="line">    else if (index &lt; 0) &#123;</span><br><span class="line">        throw new ArrayIndexOutOfBoundsException(index);</span><br><span class="line">    &#125;</span><br><span class="line">    int j = elementCount - index - 1;</span><br><span class="line">    if (j &gt; 0) &#123;</span><br><span class="line">        //扩容后就把插入点后面的元素统一后移一位</span><br><span class="line">        System.arraycopy(elementData, index + 1, elementData, index, j);</span><br><span class="line">    &#125;</span><br><span class="line">    elementCount--;</span><br><span class="line">    elementData[elementCount] = null; /* to let gc do its work */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="removeElement-删除指定元素"><a href="#removeElement-删除指定元素" class="headerlink" title="removeElement : 删除指定元素"></a>removeElement : 删除指定元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public synchronized boolean removeElement(Object obj) &#123;</span><br><span class="line">    modCount++;</span><br><span class="line">    int i = indexOf(obj);</span><br><span class="line">    if (i &gt;= 0) &#123;</span><br><span class="line">        removeElementAt(i);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>indexOf(obj)的方法看后面</p>
+<h4 id="remove-删除指定位置的元素"><a href="#remove-删除指定位置的元素" class="headerlink" title="remove : 删除指定位置的元素"></a>remove : 删除指定位置的元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public synchronized E remove(int index) &#123;</span><br><span class="line">    modCount++;</span><br><span class="line">    if (index &gt;= elementCount)</span><br><span class="line">        throw new ArrayIndexOutOfBoundsException(index);</span><br><span class="line">    E oldValue = elementData(index);</span><br><span class="line"></span><br><span class="line">    //找到删除该元素后，后面有多少位元素需要前移一位</span><br><span class="line">    int numMoved = elementCount - index - 1;</span><br><span class="line">    if (numMoved &gt; 0)</span><br><span class="line">        //迁移一位</span><br><span class="line">        System.arraycopy(elementData, index+1, elementData, index,</span><br><span class="line">                         numMoved);</span><br><span class="line">    //最后一位置为 null，不浪费空间</span><br><span class="line">    elementData[--elementCount] = null; // Let gc do its work</span><br><span class="line"></span><br><span class="line">    return oldValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="remove-删除指定元素"><a href="#remove-删除指定元素" class="headerlink" title="remove : 删除指定元素"></a>remove : 删除指定元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public boolean remove(Object o) &#123;</span><br><span class="line">    return removeElement(o);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="removeAll-删除指定集合的所有元素"><a href="#removeAll-删除指定集合的所有元素" class="headerlink" title="removeAll: 删除指定集合的所有元素"></a>removeAll: 删除指定集合的所有元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public synchronized boolean removeAll(Collection&lt;?&gt; c) &#123;</span><br><span class="line">    //直接调用 AbstractCollection 的 removeAll 方法，用迭代器挨个删除</span><br><span class="line">    return super.removeAll(c);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// AbstractCollection 的 removeAll</span><br><span class="line">public boolean removeAll(Collection&lt;?&gt; c) &#123;</span><br><span class="line">    Objects.requireNonNull(c);</span><br><span class="line">    boolean modified = false;</span><br><span class="line">    Iterator&lt;?&gt; it = iterator();</span><br><span class="line">    while (it.hasNext()) &#123;</span><br><span class="line">        if (c.contains(it.next())) &#123;</span><br><span class="line">            it.remove();</span><br><span class="line">            modified = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return modified;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="removeAllElements-删除所有元素"><a href="#removeAllElements-删除所有元素" class="headerlink" title="removeAllElements : 删除所有元素"></a>removeAllElements : 删除所有元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public synchronized void removeAllElements() &#123;</span><br><span class="line">    modCount++;</span><br><span class="line">    // Let gc do its work</span><br><span class="line">    for (int i = 0; i &lt; elementCount; i++)</span><br><span class="line">        elementData[i] = null;</span><br><span class="line"></span><br><span class="line">    elementCount = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="removeRange-删除指定范围的元素"><a href="#removeRange-删除指定范围的元素" class="headerlink" title="removeRange : 删除指定范围的元素"></a>removeRange : 删除指定范围的元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">protected synchronized void removeRange(int fromIndex, int toIndex) &#123;</span><br><span class="line">    modCount++;</span><br><span class="line">    //把结束位置以后的元素向前移动 指定数量个位置，覆盖</span><br><span class="line">    int numMoved = elementCount - toIndex;</span><br><span class="line">    System.arraycopy(elementData, toIndex, elementData, fromIndex,</span><br><span class="line">                     numMoved);</span><br><span class="line"></span><br><span class="line">    // Let gc do its work</span><br><span class="line">    // 把多余的位置置为 null</span><br><span class="line">    int newElementCount = elementCount - (toIndex-fromIndex);</span><br><span class="line">    while (elementCount != newElementCount)</span><br><span class="line">        elementData[--elementCount] = null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="retainAll-排除异己"><a href="#retainAll-排除异己" class="headerlink" title="retainAll : 排除异己"></a>retainAll : 排除异己</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public synchronized boolean retainAll(Collection&lt;?&gt; c) &#123;</span><br><span class="line">    return super.retainAll(c);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public boolean retainAll(Collection&lt;?&gt; c) &#123;</span><br><span class="line">    Objects.requireNonNull(c);</span><br><span class="line">    boolean modified = false;</span><br><span class="line">    Iterator&lt;E&gt; it = iterator();</span><br><span class="line">    while (it.hasNext()) &#123;</span><br><span class="line">        if (!c.contains(it.next())) &#123;</span><br><span class="line">            it.remove();</span><br><span class="line">            modified = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return modified;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="removeIf-JDK-1-8-新增的"><a href="#removeIf-JDK-1-8-新增的" class="headerlink" title="removeIf :　JDK 1.8 新增的"></a>removeIf :　JDK 1.8 新增的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">public synchronized boolean removeIf(Predicate&lt;? super E&gt; filter) &#123;</span><br><span class="line">    Objects.requireNonNull(filter);</span><br><span class="line">    // 将要删除的内容加入 removeSet</span><br><span class="line">    int removeCount = 0;</span><br><span class="line">    final int size = elementCount;</span><br><span class="line">    final BitSet removeSet = new BitSet(size);</span><br><span class="line">    final int expectedModCount = modCount;</span><br><span class="line">    for (int i=0; modCount == expectedModCount &amp;&amp; i &lt; size; i++) &#123;</span><br><span class="line">        @SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">        final E element = (E) elementData[i];</span><br><span class="line">        if (filter.test(element)) &#123;</span><br><span class="line">            removeSet.set(i);</span><br><span class="line">            removeCount++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (modCount != expectedModCount) &#123;</span><br><span class="line">        throw new ConcurrentModificationException();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 遍历，删除</span><br><span class="line">    final boolean anyToRemove = removeCount &gt; 0;</span><br><span class="line">    if (anyToRemove) &#123;</span><br><span class="line">        final int newSize = size - removeCount;</span><br><span class="line">        for (int i=0, j=0; (i &lt; size) &amp;&amp; (j &lt; newSize); i++, j++) &#123;</span><br><span class="line">            i = removeSet.nextClearBit(i);</span><br><span class="line">            elementData[j] = elementData[i];</span><br><span class="line">        &#125;</span><br><span class="line">        for (int k=newSize; k &lt; size; k++) &#123;</span><br><span class="line">            elementData[k] = null;  // Let gc do its work</span><br><span class="line">        &#125;</span><br><span class="line">        elementCount = newSize;</span><br><span class="line">        if (modCount != expectedModCount) &#123;</span><br><span class="line">            throw new ConcurrentModificationException();</span><br><span class="line">        &#125;</span><br><span class="line">        modCount++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return anyToRemove;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改方法"><a href="#修改方法" class="headerlink" title="修改方法"></a>修改方法</h3><h4 id="set-修改指定位置为指定元素"><a href="#set-修改指定位置为指定元素" class="headerlink" title="set : //修改指定位置为指定元素"></a>set : //修改指定位置为指定元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public synchronized E set(int index, E element) &#123;</span><br><span class="line">    if (index &gt;= elementCount)</span><br><span class="line">        throw new ArrayIndexOutOfBoundsException(index);</span><br><span class="line"></span><br><span class="line">    //找到这个元素，直接设置新值</span><br><span class="line">    E oldValue = elementData(index);</span><br><span class="line">    elementData[index] = element;</span><br><span class="line">    return oldValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="setElementAt-修改指定位置为指定元素"><a href="#setElementAt-修改指定位置为指定元素" class="headerlink" title="setElementAt : 修改指定位置为指定元素"></a>setElementAt : 修改指定位置为指定元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public synchronized void setElementAt(E obj, int index) &#123;</span><br><span class="line">    if (index &gt;= elementCount) &#123;</span><br><span class="line">        throw new ArrayIndexOutOfBoundsException(index + &quot; &gt;= &quot; +</span><br><span class="line">                                                 elementCount);</span><br><span class="line">    &#125;</span><br><span class="line">     // 数组就是方便，直接更新就好了</span><br><span class="line">    elementData[index] = obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="setSize-修改数组容量"><a href="#setSize-修改数组容量" class="headerlink" title="setSize : 修改数组容量"></a>setSize : 修改数组容量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public synchronized void setSize(int newSize) &#123;</span><br><span class="line">    modCount++;</span><br><span class="line">    if (newSize &gt; elementCount) &#123;</span><br><span class="line">        //元素个数超出容量就要扩容</span><br><span class="line">        ensureCapacityHelper(newSize);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        //新增 elementCount - newSize 个元素</span><br><span class="line">        for (int i = newSize ; i &lt; elementCount ; i++) &#123;</span><br><span class="line">            elementData[i] = null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    elementCount = newSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="sort-排序，修改顺序-用的是-Arrays-sort"><a href="#sort-排序，修改顺序-用的是-Arrays-sort" class="headerlink" title="sort : 排序，修改顺序 用的是 Arrays.sort"></a>sort : 排序，修改顺序 用的是 Arrays.sort</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public synchronized void sort(Comparator&lt;? super E&gt; c) &#123;</span><br><span class="line">    final int expectedModCount = modCount;</span><br><span class="line">    // 用的是 Arrays.sort </span><br><span class="line">    Arrays.sort((E[]) elementData, 0, elementCount, c);</span><br><span class="line">    if (modCount != expectedModCount) &#123;</span><br><span class="line">        throw new ConcurrentModificationException();</span><br><span class="line">    &#125;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="trimToSize-将当前容量值设为-实际元素个数"><a href="#trimToSize-将当前容量值设为-实际元素个数" class="headerlink" title="trimToSize : 将当前容量值设为 = 实际元素个数"></a>trimToSize : 将当前容量值设为 = 实际元素个数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public synchronized void trimToSize() &#123;</span><br><span class="line">modCount++;</span><br><span class="line">int oldCapacity = elementData.length;</span><br><span class="line">if (elementCount &lt; oldCapacity) &#123;</span><br><span class="line">        elementData = Arrays.copyOf(elementData, elementCount);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查询方法"><a href="#查询方法" class="headerlink" title="查询方法"></a>查询方法</h3><h4 id="indexOf-从index位置开始向后查找元素-o"><a href="#indexOf-从index位置开始向后查找元素-o" class="headerlink" title="indexOf : 从index位置开始向后查找元素(o)"></a>indexOf : 从index位置开始向后查找元素(o)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public synchronized int indexOf(Object o, int index) &#123;</span><br><span class="line">    if (o == null) &#123;</span><br><span class="line">        for (int i = index ; i &lt; elementCount ; i++)</span><br><span class="line">            if (elementData[i]==null)</span><br><span class="line">                return i;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        for (int i = index ; i &lt; elementCount ; i++)</span><br><span class="line">            if (o.equals(elementData[i]))</span><br><span class="line">                return i;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="indexOf-查找-o-在数组中首次出现的位置"><a href="#indexOf-查找-o-在数组中首次出现的位置" class="headerlink" title="indexOf : 查找 o 在数组中首次出现的位置"></a>indexOf : 查找 o 在数组中首次出现的位置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public int indexOf(Object o) &#123;</span><br><span class="line">    return indexOf(o, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="contains-是否包含-O"><a href="#contains-是否包含-O" class="headerlink" title="contains : 是否包含 O"></a>contains : 是否包含 O</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public boolean contains(Object o) &#123;</span><br><span class="line">    return indexOf(o, 0) &gt;= 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="containsAll-是否包含整个集合"><a href="#containsAll-是否包含整个集合" class="headerlink" title="containsAll : 是否包含整个集合"></a>containsAll : 是否包含整个集合</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public synchronized boolean containsAll(Collection&lt;?&gt; c) &#123;</span><br><span class="line">    //调用 AbstractCollection 的方法，使用迭代器挨个遍历查找，两重循环</span><br><span class="line">    return super.containsAll(c);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public boolean containsAll(Collection&lt;?&gt; c) &#123;</span><br><span class="line">    for (Object e : c)</span><br><span class="line">        if (!contains(e))</span><br><span class="line">            return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="firstElement-获取Vector中的第一个元素"><a href="#firstElement-获取Vector中的第一个元素" class="headerlink" title="firstElement : 获取Vector中的第一个元素"></a>firstElement : 获取Vector中的第一个元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public synchronized E firstElement() &#123;</span><br><span class="line">    if (elementCount == 0) &#123;</span><br><span class="line">        throw new NoSuchElementException();</span><br><span class="line">    &#125;</span><br><span class="line">    return elementData(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="lastElement-获取Vector中的最后一个元素"><a href="#lastElement-获取Vector中的最后一个元素" class="headerlink" title="lastElement : 获取Vector中的最后一个元素"></a>lastElement : 获取Vector中的最后一个元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public synchronized E lastElement() &#123;</span><br><span class="line">    if (elementCount == 0) &#123;</span><br><span class="line">        throw new NoSuchElementException();</span><br><span class="line">    &#125;</span><br><span class="line">    return elementData(elementCount - 1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="isEmpty-判断Vector是否为空"><a href="#isEmpty-判断Vector是否为空" class="headerlink" title="isEmpty : 判断Vector是否为空"></a>isEmpty : 判断Vector是否为空</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public synchronized boolean isEmpty() &#123;</span><br><span class="line">return elementCount == 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="size-返回“Vector的实际大小”，即Vector中元素个数"><a href="#size-返回“Vector的实际大小”，即Vector中元素个数" class="headerlink" title="size :  返回“Vector的实际大小”，即Vector中元素个数"></a>size :  返回“Vector的实际大小”，即Vector中元素个数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public synchronized int size() &#123;</span><br><span class="line">return elementCount;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="capacity-返回“Vector的总的容量”"><a href="#capacity-返回“Vector的总的容量”" class="headerlink" title="capacity : 返回“Vector的总的容量”"></a>capacity : 返回“Vector的总的容量”</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public synchronized int capacity() &#123;</span><br><span class="line">return elementData.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="lastIndexOf-从后向前查找元素-o-。开始位置是从前向后的第index个数"><a href="#lastIndexOf-从后向前查找元素-o-。开始位置是从前向后的第index个数" class="headerlink" title="lastIndexOf : 从后向前查找元素(o)。开始位置是从前向后的第index个数"></a>lastIndexOf : 从后向前查找元素(o)。开始位置是从前向后的第index个数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public synchronized int lastIndexOf(Object o, int index) &#123;</span><br><span class="line">    if (index &gt;= elementCount)</span><br><span class="line">        throw new IndexOutOfBoundsException(index + &quot; &gt;= &quot;+ elementCount);</span><br><span class="line"></span><br><span class="line">    if (o == null) &#123;</span><br><span class="line">        for (int i = index; i &gt;= 0; i--)</span><br><span class="line">            if (elementData[i]==null)</span><br><span class="line">                return i;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        for (int i = index; i &gt;= 0; i--)</span><br><span class="line">            if (o.equals(elementData[i]))</span><br><span class="line">                return i;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="elementAt-返回Vector中index位置的元素"><a href="#elementAt-返回Vector中index位置的元素" class="headerlink" title="elementAt : 返回Vector中index位置的元素"></a>elementAt : 返回Vector中index位置的元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public synchronized E elementAt(int index) &#123;</span><br><span class="line">    if (index &gt;= elementCount) &#123;</span><br><span class="line">        throw new ArrayIndexOutOfBoundsException(index + &quot; &gt;= &quot; + elementCount);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return elementData(index);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">E elementData(int index) &#123;</span><br><span class="line">    return (E) elementData[index];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Vector-中的迭代器"><a href="#Vector-中的迭代器" class="headerlink" title="Vector 中的迭代器"></a>Vector 中的迭代器</h3><h4 id="普通迭代器-Iterator"><a href="#普通迭代器-Iterator" class="headerlink" title="普通迭代器　Iterator:"></a>普通迭代器　Iterator:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">public synchronized Iterator&lt;E&gt; iterator() &#123;</span><br><span class="line">    return new Itr();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private class Itr implements Iterator&lt;E&gt; &#123;</span><br><span class="line">    int cursor;       // index of next element to return</span><br><span class="line">    int lastRet = -1; // index of last element returned; -1 if no such</span><br><span class="line">    int expectedModCount = modCount;</span><br><span class="line"></span><br><span class="line">    public boolean hasNext() &#123;</span><br><span class="line">        // 调用 next() 前的检查</span><br><span class="line">        return cursor != elementCount;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public E next() &#123;</span><br><span class="line">        //注意了，Vector 连迭代器的方法也加了同步</span><br><span class="line">        synchronized (Vector.this) &#123;</span><br><span class="line">            checkForComodification();</span><br><span class="line">            int i = cursor;</span><br><span class="line">            if (i &gt;= elementCount)</span><br><span class="line">                throw new NoSuchElementException();</span><br><span class="line">            cursor = i + 1;</span><br><span class="line">            return elementData(lastRet = i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void remove() &#123;</span><br><span class="line">        if (lastRet == -1)</span><br><span class="line">            throw new IllegalStateException();</span><br><span class="line">        //注意了，Vector 连迭代器的方法也加了同步</span><br><span class="line">        synchronized (Vector.this) &#123;</span><br><span class="line">            checkForComodification();</span><br><span class="line">            Vector.this.remove(lastRet);</span><br><span class="line">            expectedModCount = modCount;</span><br><span class="line">        &#125;</span><br><span class="line">        cursor = lastRet;</span><br><span class="line">        lastRet = -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //大概看下这个 1.8 的方法</span><br><span class="line">    @Override</span><br><span class="line">    public void forEachRemaining(Consumer&lt;? super E&gt; action) &#123;</span><br><span class="line">        Objects.requireNonNull(action);</span><br><span class="line">        synchronized (Vector.this) &#123;</span><br><span class="line">            final int size = elementCount;</span><br><span class="line">            int i = cursor;</span><br><span class="line">            if (i &gt;= size) &#123;</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">    @SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">            final E[] elementData = (E[]) Vector.this.elementData;</span><br><span class="line">            if (i &gt;= elementData.length) &#123;</span><br><span class="line">                throw new ConcurrentModificationException();</span><br><span class="line">            &#125;</span><br><span class="line">            while (i != size &amp;&amp; modCount == expectedModCount) &#123;</span><br><span class="line">                action.accept(elementData[i++]);</span><br><span class="line">            &#125;</span><br><span class="line">            // update once at end of iteration to reduce heap write traffic</span><br><span class="line">            cursor = i;</span><br><span class="line">            lastRet = i - 1;</span><br><span class="line">            checkForComodification();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    final void checkForComodification() &#123;</span><br><span class="line">        if (modCount != expectedModCount)</span><br><span class="line">            throw new ConcurrentModificationException();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="ListIterator"><a href="#ListIterator" class="headerlink" title="ListIterator"></a>ListIterator</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">public synchronized ListIterator&lt;E&gt; listIterator(int index) &#123;</span><br><span class="line">    if (index &lt; 0 || index &gt; elementCount)</span><br><span class="line">        throw new IndexOutOfBoundsException(&quot;Index: &quot;+index);</span><br><span class="line">    return new ListItr(index);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    final class ListItr extends Itr implements ListIterator&lt;E&gt; &#123;</span><br><span class="line">    ListItr(int index) &#123;</span><br><span class="line">        super();</span><br><span class="line">        cursor = index;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public boolean hasPrevious() &#123;</span><br><span class="line">        return cursor != 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int nextIndex() &#123;</span><br><span class="line">        return cursor;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int previousIndex() &#123;</span><br><span class="line">        return cursor - 1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public E previous() &#123;</span><br><span class="line">        synchronized (Vector.this) &#123;</span><br><span class="line">            checkForComodification();</span><br><span class="line">            int i = cursor - 1;</span><br><span class="line">            if (i &lt; 0)</span><br><span class="line">                throw new NoSuchElementException();</span><br><span class="line">            cursor = i;</span><br><span class="line">            return elementData(lastRet = i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void set(E e) &#123;</span><br><span class="line">        if (lastRet == -1)</span><br><span class="line">            throw new IllegalStateException();</span><br><span class="line">        synchronized (Vector.this) &#123;</span><br><span class="line">            checkForComodification();</span><br><span class="line">            Vector.this.set(lastRet, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void add(E e) &#123;</span><br><span class="line">        int i = cursor;</span><br><span class="line">        synchronized (Vector.this) &#123;</span><br><span class="line">            checkForComodification();</span><br><span class="line">            Vector.this.add(i, e);</span><br><span class="line">            expectedModCount = modCount;</span><br><span class="line">        &#125;</span><br><span class="line">        cursor = i + 1;</span><br><span class="line">        lastRet = -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Vector-还支持-Enumeration-迭代：返回“Vector中全部元素对应的Enumeration”"><a href="#Vector-还支持-Enumeration-迭代：返回“Vector中全部元素对应的Enumeration”" class="headerlink" title="Vector 还支持 Enumeration　迭代：返回“Vector中全部元素对应的Enumeration”"></a>Vector 还支持 Enumeration　迭代：返回“Vector中全部元素对应的Enumeration”</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public Enumeration&lt;E&gt; elements() &#123;</span><br><span class="line">    // 通过匿名类实现Enumeration</span><br><span class="line">     return new Enumeration&lt;E&gt;() &#123;</span><br><span class="line">         int count = 0;</span><br><span class="line"></span><br><span class="line">         // 是否存在下一个元素</span><br><span class="line">         public boolean hasMoreElements() &#123;</span><br><span class="line">             return count &lt; elementCount;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         // 获取下一个元素</span><br><span class="line">         public E nextElement() &#123;</span><br><span class="line">             synchronized (Vector.this) &#123;</span><br><span class="line">                 if (count &lt; elementCount) &#123;</span><br><span class="line">                     return elementData(count++);</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">             throw new NoSuchElementException(&quot;Vector Enumeration&quot;);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Vector 特点</p>
+<ul>
+<li>底层由一个可以增长的数组组成</li>
+<li>Vector 通过 capacity (容量) 和 capacityIncrement (增长数量) 来尽量少的占用空间</li>
+<li>扩容时默认扩大两倍</li>
+<li>最好在插入大量元素前增加 vector 容量，那样可以减少重新申请内存的次数</li>
+<li>通过 iterator 和 lastIterator 获得的迭代器是 fail-fast 的</li>
+<li>通过 elements 获得的老版迭代器 Enumeration 不是 fail-fast 的</li>
+<li>同步类，每个方法前都有同步锁 synchronized</li>
+<li>在 JDK 2.0 以后，经过优化，Vector 也加入了 Java 集合框架大家族</li>
+</ul>
+<p>Vector VS ArrayList</p>
+<p>共同点：</p>
+<ul>
+<li>都是基于数组</li>
+<li>都支持随机访问</li>
+<li>默认容量都是 10</li>
+<li>都有扩容机制</li>
+</ul>
+<p>区别：</p>
+<ul>
+<li>Vector 出生的比较早，JDK 1.0 就出生了，ArrayList JDK 1.2 才出来</li>
+<li>Vector 比 ArrayList 多一种迭代器 Enumeration</li>
+<li>Vector 是线程安全的，ArrayList 不是</li>
+<li>Vector 默认扩容 2 倍，ArrayList 是 1.5</li>
+</ul>
+<p>如果没有线程安全的需求，一般推荐使用 ArrayList，而不是 Vector，因为每次都要获取锁，效率太低。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/28/常用集合类-四-LinkedList/" rel="next" title="常用集合类(四) -- LinkedList">
+                <i class="fa fa-chevron-left"></i> 常用集合类(四) -- LinkedList
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="李特">
+            
+              <p class="site-author-name" itemprop="name">李特</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#成员变量"><span class="nav-number">2.</span> <span class="nav-text">成员变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造函数"><span class="nav-number">3.</span> <span class="nav-text">构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用方法"><span class="nav-number">3.1.</span> <span class="nav-text">常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#扩容前兆-检查数量"><span class="nav-number">3.1.1.</span> <span class="nav-text">扩容前兆 检查数量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩容代码"><span class="nav-number">3.1.2.</span> <span class="nav-text">扩容代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#copyInto-将数组Vector的全部元素都拷贝到数组anArray中"><span class="nav-number">3.1.3.</span> <span class="nav-text">copyInto : // 将数组Vector的全部元素都拷贝到数组anArray中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ensureCapacity-确定Vector的容量"><span class="nav-number">3.1.4.</span> <span class="nav-text">ensureCapacity : 确定Vector的容量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加元素的五种方法"><span class="nav-number">3.1.5.</span> <span class="nav-text">添加元素的五种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#insertElementAt-在指定位置插入一个元素，同步的"><span class="nav-number">3.1.5.1.</span> <span class="nav-text">insertElementAt : 在指定位置插入一个元素，同步的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#addElement-尾部插入元素，同步的"><span class="nav-number">3.1.5.2.</span> <span class="nav-text">addElement : 尾部插入元素，同步的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addAll-添加一个集合到尾部，同步的"><span class="nav-number">3.1.6.</span> <span class="nav-text">addAll : 添加一个集合到尾部，同步的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addAll-添加一个结合到指定位置"><span class="nav-number">3.1.7.</span> <span class="nav-text">addAll : 添加一个结合到指定位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#add-ListIterator-的添加方法"><span class="nav-number">3.1.8.</span> <span class="nav-text">add :  ListIterator 的添加方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除的9中方法"><span class="nav-number">3.1.9.</span> <span class="nav-text">删除的9中方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#removeElementAt-移除index位置的元素"><span class="nav-number">3.1.9.1.</span> <span class="nav-text">removeElementAt: 移除index位置的元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#removeElement-删除指定元素"><span class="nav-number">3.1.9.2.</span> <span class="nav-text">removeElement : 删除指定元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#remove-删除指定位置的元素"><span class="nav-number">3.1.9.3.</span> <span class="nav-text">remove : 删除指定位置的元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#remove-删除指定元素"><span class="nav-number">3.1.9.4.</span> <span class="nav-text">remove : 删除指定元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#removeAll-删除指定集合的所有元素"><span class="nav-number">3.1.9.5.</span> <span class="nav-text">removeAll: 删除指定集合的所有元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#removeAllElements-删除所有元素"><span class="nav-number">3.1.9.6.</span> <span class="nav-text">removeAllElements : 删除所有元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#removeRange-删除指定范围的元素"><span class="nav-number">3.1.9.7.</span> <span class="nav-text">removeRange : 删除指定范围的元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#retainAll-排除异己"><span class="nav-number">3.1.9.8.</span> <span class="nav-text">retainAll : 排除异己</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#removeIf-JDK-1-8-新增的"><span class="nav-number">3.1.9.9.</span> <span class="nav-text">removeIf :　JDK 1.8 新增的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改方法"><span class="nav-number">3.1.10.</span> <span class="nav-text">修改方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#set-修改指定位置为指定元素"><span class="nav-number">3.1.10.1.</span> <span class="nav-text">set : //修改指定位置为指定元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#setElementAt-修改指定位置为指定元素"><span class="nav-number">3.1.10.2.</span> <span class="nav-text">setElementAt : 修改指定位置为指定元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#setSize-修改数组容量"><span class="nav-number">3.1.10.3.</span> <span class="nav-text">setSize : 修改数组容量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sort-排序，修改顺序-用的是-Arrays-sort"><span class="nav-number">3.1.10.4.</span> <span class="nav-text">sort : 排序，修改顺序 用的是 Arrays.sort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#trimToSize-将当前容量值设为-实际元素个数"><span class="nav-number">3.1.10.5.</span> <span class="nav-text">trimToSize : 将当前容量值设为 = 实际元素个数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询方法"><span class="nav-number">3.1.11.</span> <span class="nav-text">查询方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#indexOf-从index位置开始向后查找元素-o"><span class="nav-number">3.1.11.1.</span> <span class="nav-text">indexOf : 从index位置开始向后查找元素(o)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#indexOf-查找-o-在数组中首次出现的位置"><span class="nav-number">3.1.11.2.</span> <span class="nav-text">indexOf : 查找 o 在数组中首次出现的位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#contains-是否包含-O"><span class="nav-number">3.1.11.3.</span> <span class="nav-text">contains : 是否包含 O</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#containsAll-是否包含整个集合"><span class="nav-number">3.1.12.</span> <span class="nav-text">containsAll : 是否包含整个集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#firstElement-获取Vector中的第一个元素"><span class="nav-number">3.1.12.1.</span> <span class="nav-text">firstElement : 获取Vector中的第一个元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lastElement-获取Vector中的最后一个元素"><span class="nav-number">3.1.12.2.</span> <span class="nav-text">lastElement : 获取Vector中的最后一个元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isEmpty-判断Vector是否为空"><span class="nav-number">3.1.12.3.</span> <span class="nav-text">isEmpty : 判断Vector是否为空</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#size-返回“Vector的实际大小”，即Vector中元素个数"><span class="nav-number">3.1.12.4.</span> <span class="nav-text">size :  返回“Vector的实际大小”，即Vector中元素个数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#capacity-返回“Vector的总的容量”"><span class="nav-number">3.1.12.5.</span> <span class="nav-text">capacity : 返回“Vector的总的容量”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lastIndexOf-从后向前查找元素-o-。开始位置是从前向后的第index个数"><span class="nav-number">3.1.12.6.</span> <span class="nav-text">lastIndexOf : 从后向前查找元素(o)。开始位置是从前向后的第index个数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#elementAt-返回Vector中index位置的元素"><span class="nav-number">3.1.12.7.</span> <span class="nav-text">elementAt : 返回Vector中index位置的元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector-中的迭代器"><span class="nav-number">3.1.13.</span> <span class="nav-text">Vector 中的迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#普通迭代器-Iterator"><span class="nav-number">3.1.13.1.</span> <span class="nav-text">普通迭代器　Iterator:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ListIterator"><span class="nav-number">3.1.13.2.</span> <span class="nav-text">ListIterator</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector-还支持-Enumeration-迭代：返回“Vector中全部元素对应的Enumeration”"><span class="nav-number">3.1.14.</span> <span class="nav-text">Vector 还支持 Enumeration　迭代：返回“Vector中全部元素对应的Enumeration”</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李特</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'pw2WLaWaDRn6yoyXp7Se57yz-gzGzoHsz',
+        appKey: '8uXXfa38D2IogHp7Vt2LO8yK',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <!-- 背景动画 -->
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+  
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>

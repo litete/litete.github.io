@@ -1,3 +1,4 @@
+http://www.litede.cn/2019/10/28/常用集合类-五-Vector/
 http://www.litede.cn/2019/10/28/常用集合类-四-LinkedList/
 http://www.litede.cn/2019/10/26/常用集合类-三-ArrayList/
 http://www.litede.cn/2019/10/26/常用集合类-二 -- AbstractList/
