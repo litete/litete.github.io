@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="李特个人博客">
 <meta property="og:description" content="Stack是先进后出的栈结构,其并不直接实现具体的逻辑,而是通过集成Vector类,调用Vector类的方法实现. 12public class Stack&amp;lt;E&amp;gt; extends Vector&amp;lt;E&amp;gt;  核心方法Stack类代码非常简单,其有3个核心方法:push pop peek push 插入12345public E push(E item) &amp;#123;    add">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-01T09:25:36.845Z">
+<meta property="og:updated_time" content="2019-11-02T00:43:21.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用集合类(六) -- Stack栈的原理">
 <meta name="twitter:description" content="Stack是先进后出的栈结构,其并不直接实现具体的逻辑,而是通过集成Vector类,调用Vector类的方法实现. 12public class Stack&amp;lt;E&amp;gt; extends Vector&amp;lt;E&amp;gt;  核心方法Stack类代码非常简单,其有3个核心方法:push pop peek push 插入12345public E push(E item) &amp;#123;    add">
@@ -435,7 +435,7 @@
 <p> 运行结果：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;()&#125;&#125;</span><br><span class="line">true</span><br></pre></td></tr></table></figure></p>
 <h2 id="行编辑器"><a href="#行编辑器" class="headerlink" title="行编辑器"></a>行编辑器</h2><p> 输入行中字符‘#’表示退格‘@’表示前面的输入无效</p>
 <p> 来看实现方式吧        </p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static String lineEdit(String input) &#123;</span><br><span class="line">	Stack&lt;Character&gt; myStack = new ArrayStack&lt;Character&gt;();</span><br><span class="line">	char[] arr = input.toCharArray();</span><br><span class="line">	for (char c : arr) &#123;</span><br><span class="line">		if (c == &apos;#&apos;) &#123;</span><br><span class="line">			myStack.pop();</span><br><span class="line">		&#125; else if (c == &apos;@&apos;) &#123;</span><br><span class="line">			myStack.clear();</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			myStack.push(c);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return myStack.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static String lineEdit(String input) &#123;</span><br><span class="line">	Stack&lt;Character&gt; myStack = new ArrayStack&lt;Character&gt;();</span><br><span class="line">	char[] arr = input.toCharArray();</span><br><span class="line">	for (char c : arr) &#123;</span><br><span class="line">		if (c == &apos;#&apos;) &#123;</span><br><span class="line">			myStack.pop();</span><br><span class="line">		&#125; else if (c == &apos;@&apos;) &#123;</span><br><span class="line">			myStack.clear();</span><br><span class="line">		&#125; else &#123;                                                                                                                                                    </span><br><span class="line">			myStack.push(c);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return myStack.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>测试代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">		System.out.println(conversion(10, 2));</span><br><span class="line">		System.out.println(lineEdit(&quot;你好!#你好啊@哈哈&quot;));</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
@@ -493,6 +493,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/02/常用集合类-七-HashSet/" rel="prev" title="常用集合类(七) -- HashSet">
+                常用集合类(七) -- HashSet <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -574,7 +578,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

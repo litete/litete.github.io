@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.litede.cn/2019/11/02/%E5%B8%B8%E7%94%A8%E9%9B%86%E5%90%88%E7%B1%BB-%E4%B8%83-HashSet/</loc>
+    <lastmod>2019-11-02</lastmod>
+  </url>  <url>
     <loc>http://www.litede.cn/2019/11/01/%E5%B8%B8%E7%94%A8%E9%9B%86%E5%90%88%E7%B1%BB-%E5%85%AD-Stack%E6%A0%88%E7%9A%84%E5%8E%9F%E7%90%86/</loc>
-    <lastmod>2019-11-01</lastmod>
+    <lastmod>2019-11-02</lastmod>
   </url>  <url>
     <loc>http://www.litede.cn/2019/10/28/%E5%B8%B8%E7%94%A8%E9%9B%86%E5%90%88%E7%B1%BB-%E4%BA%94-Vector/</loc>
     <lastmod>2019-10-29</lastmod>
