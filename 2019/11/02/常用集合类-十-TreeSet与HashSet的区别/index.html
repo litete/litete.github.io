@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="java,">
 
 
 
@@ -81,14 +81,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://www.litede.cn/tags/index.html">
+<meta name="description" content="HashSetHashSet有以下特点  不能保证元素的排列顺序，顺序有可能发生变化 不是同步的 集合元素可以是null,但只能放入一个null  当向HashSet集合中存入一个元素时，HashSet会调用该对象的hashCode()方法来得到该对象的hashCode值，然后根据 hashCode值来决定该对象在HashSet中存储位置。简单的说，HashSet集合判断两个元素相等的标准是两个对">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用集合类(十) -- TreeSet与HashSet的区别">
+<meta property="og:url" content="http://www.litede.cn/2019/11/02/常用集合类-十-TreeSet与HashSet的区别/index.html">
 <meta property="og:site_name" content="李特个人博客">
+<meta property="og:description" content="HashSetHashSet有以下特点  不能保证元素的排列顺序，顺序有可能发生变化 不是同步的 集合元素可以是null,但只能放入一个null  当向HashSet集合中存入一个元素时，HashSet会调用该对象的hashCode()方法来得到该对象的hashCode值，然后根据 hashCode值来决定该对象在HashSet中存储位置。简单的说，HashSet集合判断两个元素相等的标准是两个对">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-20T03:25:22.751Z">
+<meta property="og:updated_time" content="2019-11-02T06:03:52.699Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="标签">
+<meta name="twitter:title" content="常用集合类(十) -- TreeSet与HashSet的区别">
+<meta name="twitter:description" content="HashSetHashSet有以下特点  不能保证元素的排列顺序，顺序有可能发生变化 不是同步的 集合元素可以是null,但只能放入一个null  当向HashSet集合中存入一个元素时，HashSet会调用该对象的hashCode()方法来得到该对象的hashCode值，然后根据 hashCode值来决定该对象在HashSet中存储位置。简单的说，HashSet集合判断两个元素相等的标准是两个对">
 
 
 
@@ -118,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://www.litede.cn/tags/">
+  <link rel="canonical" href="http://www.litede.cn/2019/11/02/常用集合类-十-TreeSet与HashSet的区别/">
 
 
 
 
 
-  <title>标签 | 李特个人博客</title>
+  <title>常用集合类(十) -- TreeSet与HashSet的区别 | 李特个人博客</title>
   
 
 
@@ -282,40 +286,211 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.litede.cn/2019/11/02/常用集合类-十-TreeSet与HashSet的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李特">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李特个人博客">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">标签</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 7 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Hexo-GitPage/" style="font-size: 21px; color: #6f6f6f">Hexo+GitPage</a> <a href="/tags/SpringBoot/" style="font-size: 21px; color: #6f6f6f">SpringBoot</a> <a href="/tags/docker/" style="font-size: 12px; color: #ccc">docker</a> <a href="/tags/dubbo/" style="font-size: 12px; color: #ccc">dubbo</a> <a href="/tags/java/" style="font-size: 30px; color: #111">java</a> <a href="/tags/jvm/" style="font-size: 12px; color: #ccc">jvm</a> <a href="/tags/vps搭建shadowsocks/" style="font-size: 12px; color: #ccc">vps搭建shadowsocks</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">常用集合类(十) -- TreeSet与HashSet的区别</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-02T14:00:48+08:00">
+                2019-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/11/02/常用集合类-十-TreeSet与HashSet的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/02/常用集合类-十-TreeSet与HashSet的区别/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h1 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h1><p>HashSet有以下特点</p>
+<ul>
+<li>不能保证元素的排列顺序，顺序有可能发生变化</li>
+<li>不是同步的</li>
+<li>集合元素可以是null,但只能放入一个null</li>
+</ul>
+<p>当向HashSet集合中存入一个元素时，HashSet会调用该对象的hashCode()方法来得到该对象的hashCode值，然后根据 hashCode值来决定该对象在HashSet中存储位置。<br>简单的说，HashSet集合判断两个元素相等的标准是两个对象通过equals方法比较相等，并且两个对象的hashCode()方法返回值相 等<br>注意，如果要把一个对象放入HashSet中，重写该对象对应类的equals方法，也应该重写其hashCode()方法。其规则是如果两个对 象通过equals方法比较返回true时，其hashCode也应该相同。另外，对象中用作equals比较标准的属性，都应该用来计算 hashCode的值。</p>
+<h1 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h1><p>TreeSet是SortedSet接口的唯一实现类，TreeSet可以确保集合元素处于排序状态。TreeSet支持两种排序方式，自然排序 和定制排序，其中自然排序为默认的排序方式。向TreeSet中加入的应该是同一个类的对象。<br>TreeSet判断两个对象不相等的方式是两个对象通过equals方法返回false，或者通过CompareTo方法比较没有返回0</p>
+<ol>
+<li>自然排序<br>自然排序使用要排序元素的CompareTo（Object obj）方法来比较元素之间大小关系，然后将元素按照升序排列。</li>
+</ol>
+<p>Java提供了一个Comparable接口，该接口里定义了一个compareTo(Object obj)方法，该方法返回一个整数值，实现了该接口的对象就可以比较大小。</p>
+<p>obj1.compareTo(obj2)方法如果返回0，则说明被比较的两个对象相等，如果返回一个正数，则表明obj1大于obj2，如果是 负数，则表明obj1小于obj2。</p>
+<p>如果我们将两个对象的equals方法总是返回true，则这两个对象的compareTo方法返回应该返回0</p>
+<ol start="2">
+<li>定制排序</li>
+</ol>
+<p>自然排序是根据集合元素的大小，以升序排列，如果要定制排序，应该使用Comparator接口，实现 int compare(T o1,T o2)方法。</p>
+<p>最重要：</p>
+<ol>
+<li><p>TreeSet 是二叉树实现的,Treeset中的数据是自动排好序的，不允许放入null值。 </p>
+</li>
+<li><p>HashSet 是哈希表实现的,HashSet中的数据是无序的，可以放入null，但只能放入一个null，两者中的值都不能重复，就如数据库中唯一约束。 </p>
+</li>
+<li><p>HashSet要求放入的对象必须实现HashCode()方法，放入的对象，是以hashcode码作为标识的，而具有相同内容的 String对象，hashcode是一样，所以放入的内容不能重复。但是同一个类的对象可以放入不同的实例 。</p>
+</li>
+</ol>
+<h1 id="HashSet与TreeSet的使用场景"><a href="#HashSet与TreeSet的使用场景" class="headerlink" title="HashSet与TreeSet的使用场景"></a>HashSet与TreeSet的使用场景</h1><p>HashSet：哈希表是通过使用称为散列法的机制来存储信息的，元素并没有以某种特定顺序来存放 TreeSet：提供一个使用树结构存储Set接口的实现(红黑树算法)，对象以升序顺序存储，访问和遍历的时间很快。<br>使用场景:HashSet是基于Hash算法实现的，其性能通常都优于TreeSet。我们通常都应该使用HashSet，在我们需要排序的功能时，我们才使用TreeSet。 </p>
+<h1 id="HashSet与TreeSet的底层运行方式"><a href="#HashSet与TreeSet的底层运行方式" class="headerlink" title="HashSet与TreeSet的底层运行方式:"></a>HashSet与TreeSet的底层运行方式:</h1><ol>
+<li>TreeSet集合对象的加入过程： </li>
+</ol>
+<p>TreeSet的底层是通过二叉树来完成存储的，无序的集合<br>当我们将一个对象加入treeset中，treeset会将第一个对象作为根对象，然后调用对象的compareTo方法拿第二个对象和第一个比较，当返回至=0时，说明2个对象内容相等，treeset就不把第二个对象加入集合。返回&gt;1时，说明第二个对象大于第一个对象，将第二个对象放在右边，返回-1时，则将第二个对象放在左边，依次类推 </p>
+<ol start="2">
+<li>HashSet集合对象的加入过程： </li>
+</ol>
+<p>hashset底层是hash值的地址，它里面存的对象是无序的。<br>第一个对象进入集合时，hashset会调用object类的hashcode根据对象在堆内存里的地址调用对象重写的hashcode计算出一个hash值，然后第一个对象就进入hashset集合中的任意一个位置。<br>第二个对象开始进入集合，hashset先根据第二个对象在堆内存的地址调用对象的计算出一个hash值，如果第二个对象和第一个对象在堆内存里的地址是相同的，那么得到的hash值也是相同的，直接返回true，hash得到true后就不把第二个元素加入集合（这段是hash源码程序中的操作）。如果第二个对象和第一个对象在堆内存里地址是不同的，这时hashset类会先调用自己的方法遍历集合中的元素，当遍历到某个元素时，调用对象的equals方法，如果相等，返回true，则说明这两个对象的内容是相同的，hashset得到true后不会把第二个对象加入集合。 </p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/02/常用集合类-九-TreeSet/" rel="next" title="常用集合类(九) -- TreeSet">
+                <i class="fa fa-chevron-left"></i> 常用集合类(九) -- TreeSet
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -351,8 +526,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -421,6 +605,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HashSet"><span class="nav-number">1.</span> <span class="nav-text">HashSet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TreeSet"><span class="nav-number">2.</span> <span class="nav-text">TreeSet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HashSet与TreeSet的使用场景"><span class="nav-number">3.</span> <span class="nav-text">HashSet与TreeSet的使用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HashSet与TreeSet的底层运行方式"><span class="nav-number">4.</span> <span class="nav-text">HashSet与TreeSet的底层运行方式:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
