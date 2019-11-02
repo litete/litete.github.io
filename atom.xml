@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.litede.cn/"/>
-  <updated>2019-11-02T02:41:56.526Z</updated>
+  <updated>2019-11-02T03:06:59.356Z</updated>
   <id>http://www.litede.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常用集合类(八) -- LinkedHashSet</title>
+    <link href="http://www.litede.cn/2019/11/02/%E5%B8%B8%E7%94%A8%E9%9B%86%E5%90%88%E7%B1%BB-%E5%85%AB-LinkedHashSet/"/>
+    <id>http://www.litede.cn/2019/11/02/常用集合类-八-LinkedHashSet/</id>
+    <published>2019-11-02T03:05:09.000Z</published>
+    <updated>2019-11-02T03:06:59.356Z</updated>
+    
+    <content type="html"><![CDATA[<p>LinkedHashSet 继承了 HashSet，在此基础上维护了元素的插入顺序。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public class LinkedHashSet&lt;E&gt;</span><br><span class="line">    extends HashSet&lt;E&gt;</span><br><span class="line">    implements Set&lt;E&gt;, Cloneable, java.io.Serializable &#123;</span><br></pre></td></tr></table></figure><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><p>LinkedHashSet 的源码非常简单，只有简单的四4个构造方法。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public LinkedHashSet(int initialCapacity, float loadFactor) &#123;</span><br><span class="line">    super(initialCapacity, loadFactor, true);</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">public LinkedHashSet(int initialCapacity) &#123;</span><br><span class="line">    super(initialCapacity, .75f, true);</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">public LinkedHashSet() &#123;</span><br><span class="line">    super(16, .75f, true);</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">public LinkedHashSet(Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line">    super(Math.max(2*c.size(), 11), .75f, true);</span><br><span class="line">    addAll(c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>但我们不是说 HashSet 还维护了元素的插入顺序么？那这部分代码写在哪里呢？<br>这里我们要注意一个细节，即 LinkedHashSet 调用的都是 HashSet 的三个参数构造方法，即 HashSet 的这个方法。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HashSet(int initialCapacity, float loadFactor, boolean dummy) &#123;</span><br><span class="line">    map = new LinkedHashMap&lt;&gt;(initialCapacity, loadFactor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>从上面的代码我们知道，LinkedHashSet 虽然继承的是 HashSet，但是其却使用 LinkedHashMap 做为实现类。而 LinkedHashMap 则本身维护了元素的插入顺序，这在我们接下来解析 LinkedHashMap 源码的时候会讲到。</p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>LinkedHashSet 是在 HashSet 的基础上，维护了元素的插入顺序。虽然 LinkedHashSet 使用了 HashSet 的实现，但其却调用了 LinkedHashMap 作为最终实现，从而实现了对插入元素顺序的维护。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;LinkedHashSet 继承了 HashSet，在此基础上维护了元素的插入顺序。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/s
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://www.litede.cn/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://www.litede.cn/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>常用集合类(七) -- HashSet</title>
@@ -516,32 +543,6 @@
       
       
         &lt;p&gt;在进行了&lt;strong&gt;&lt;a href=&quot;http://www.litede.cn/2019/09/20/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGitpage%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&quot;&gt;Hexo和Gi
-      
-    
-    </summary>
-    
-    
-      <category term="Hexo+GitPage" scheme="http://www.litede.cn/categories/Hexo-GitPage/"/>
-    
-    
-      <category term="Hexo+GitPage" scheme="http://www.litede.cn/tags/Hexo-GitPage/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用Hexo和Gitpage搭建博客(一)</title>
-    <link href="http://www.litede.cn/2019/09/20/%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGitpage%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://www.litede.cn/2019/09/20/使用Hexo和Gitpage搭建博客/</id>
-    <published>2019-09-20T08:29:50.000Z</published>
-    <updated>2019-09-20T10:05:17.799Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>作为一个程序员，个人博客可以说是不可或缺的。它可以记录自己技术成长的过程，也可以供别人参考、给他人提供方便，还可以锻炼自己的表达能力等等。这几年陆陆续续的在很多地方写过博客（CSDN、个人服务器），但是都有一些缺陷，所以最后决定用GitPage作为自己博客的新起点</strong></p><blockquote><p>Github Page 是 Github 提供的一种免费的静态网页托管服务（所以想想免费的空间不用也挺浪费的哈哈哈），可以用来托管博客、项目官网等静态网页。支持 Jekyll、Hugo、Hexo 编译静态资源，这次我们的主角就是 Hexo 了，具体的内容下面在文章内介绍。</p></blockquote><h2 id="一、准备环境"><a href="#一、准备环境" class="headerlink" title="一、准备环境"></a>一、准备环境</h2><p>&emsp;&emsp;1.node.js<br>&emsp;&emsp;2.git<br><strong>安装非常简单 此处不再赘述</strong><br>&emsp;&emsp;安装验证：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git version</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure><hr><h2 id="二、安装Hexo"><a href="#二、安装Hexo" class="headerlink" title="二、安装Hexo"></a>二、安装Hexo</h2><p>在命令行输入执行以下命令：</p><p><code>npm install -g hexo-cli</code></p><p>安装 Hexo 完成后，再执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init myBlog</span><br><span class="line">cd myBlog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure><p>注：myBlog为文件夹的名字 可根据自己的需求修改</p><p>新建完成后，指定文件夹的目录如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">├── _config.yml # 网站的配置信息，您可以在此配置大部分的参数。 </span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds # 模版文件夹</span><br><span class="line">├── source  # 资源文件夹，除 _posts 文件，其他以下划线_开头的文件或者文件夹不会被编译打包到public文件夹</span><br><span class="line">|   ├── _drafts # 草稿文件</span><br><span class="line">|   └── _posts # 文章Markdowm文件 </span><br><span class="line">└── themes  # 主题文件夹</span><br></pre></td></tr></table></figure><p>好了，如果上面的命令都没报错的话，就恭喜了，运行 hexo s 命令，其中 s 是 server 的缩写，在浏览器中输入 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 回车就可以预览效果了。<br><code>hexo s</code></p><p>以下是我本地的预览效果，更换了 next 主题的，默认不是这个主题。<br><img src="/images/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%88%AA%E5%9B%BE.png" alt="个人博客截图" title="个人博客截图"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;作为一个程序员，个人博客可以说是不可或缺的。它可以记录自己技术成长的过程，也可以供别人参考、给他人提供方便，还可以锻炼自己的表达能力等等。这几年陆陆续续的在很多地方写过博客（CSDN、个人服务器），但是都有一些缺陷，所以最后决定用GitPage作为自己博客的
       
     
     </summary>

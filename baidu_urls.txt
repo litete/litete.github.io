@@ -1,3 +1,4 @@
+http://www.litede.cn/2019/11/02/常用集合类-八-LinkedHashSet/
 http://www.litede.cn/2019/11/02/常用集合类-七-HashSet/
 http://www.litede.cn/2019/11/01/常用集合类-六-Stack栈的原理/
 http://www.litede.cn/2019/10/28/常用集合类-五-Vector/
